@@ -370,4 +370,56 @@
     }
   }, { passive: true });
 
+  // ══════════════════════════════════════════
+  // ONGOING PROJECTS AUTOSCROLL & WHATSAPP REDIRECT
+  // ══════════════════════════════════════════
+  const projectsScroll = document.getElementById('projects-scroll');
+  if (projectsScroll) {
+    let scrollInterval;
+    
+    const startAutoScroll = () => {
+      if(scrollInterval) clearInterval(scrollInterval);
+      scrollInterval = setInterval(() => {
+        const maxScrollLeft = projectsScroll.scrollWidth - projectsScroll.clientWidth;
+        // If reached the end, reset to start
+        if (projectsScroll.scrollLeft >= maxScrollLeft - 10) {
+          projectsScroll.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          // Scroll by approx one card width
+          projectsScroll.scrollBy({ left: 320, behavior: 'smooth' });
+        }
+      }, 2500);
+    };
+
+    const stopAutoScroll = () => {
+      if(scrollInterval) clearInterval(scrollInterval);
+    };
+
+    // Initialize auto-scroll
+    startAutoScroll();
+
+    // Pause on hover or touch
+    projectsScroll.addEventListener('mouseenter', stopAutoScroll);
+    projectsScroll.addEventListener('mouseleave', startAutoScroll);
+    projectsScroll.addEventListener('touchstart', stopAutoScroll, {passive: true});
+    projectsScroll.addEventListener('touchend', startAutoScroll, {passive: true});
+
+    // Make entire project card redirect to WhatsApp
+    const projectCards = projectsScroll.querySelectorAll('.project-card');
+    projectCards.forEach(card => {
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', (e) => {
+        // Let anchor tag handle its own click
+        if (e.target.closest('a')) return;
+        
+        const nameEl = card.querySelector('.project-card-name');
+        if (nameEl) {
+          const projectName = nameEl.textContent.trim();
+          const text = encodeURIComponent(`Hello, I would like to enquire about ${projectName}`);
+          window.open(`https://wa.me/917745027821?text=${text}`, '_blank', 'noopener,noreferrer');
+        }
+      });
+    });
+  }
+
 })();
