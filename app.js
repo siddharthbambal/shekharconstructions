@@ -35,6 +35,27 @@
     'From concept to key handover, we transform your vision into architectural marvels that stand the test of time.'
   ];
 
+  const albumHeroTitles = [
+    'Building trust.<br /><em>Earning recognition.</em>',
+    'Celebrating <em>achievement</em>',
+    'A shared <em>vision</em><br />for Nagpur',
+    'Proudly part of<br /><em>CREDAI Nagpur</em>',
+    'Recognised by our<br /><em>community</em>',
+    'Leading with<br /><em>purpose</em>',
+    'A journey built on<br /><em>trust</em>',
+    'Inspired to build<br /><em>what matters</em>'
+  ];
+  const albumHeroSubtitles = [
+    'A glimpse of our journey with Nagpur’s real estate community.',
+    'Honouring the people and partnerships behind our work.',
+    'Committed to thoughtful spaces and a stronger built environment.',
+    'Connected to the industry and the city we call home.',
+    'Every milestone encourages us to keep building better.',
+    'Ar. Kanchan Bambal with leaders from Maharashtra’s real estate community.',
+    'A proud moment from the CREDAI Nagpur Metro installation ceremony.',
+    'Ar. Kanchan Bambal, nominee for Best Woman Entrepreneur in Real Estate 2024.'
+  ];
+
   let currentSlide = 0;
   let slideInterval;
   const SLIDE_DURATION = 5000;
@@ -66,8 +87,8 @@
     subtitleEl.style.transform = 'translateY(20px)';
 
     setTimeout(() => {
-      titleEl.innerHTML = heroTitles[currentSlide];
-      subtitleEl.textContent = heroSubtitles[currentSlide];
+      titleEl.innerHTML = albumHeroTitles[currentSlide];
+      subtitleEl.textContent = albumHeroSubtitles[currentSlide];
       titleEl.style.opacity = '1';
       titleEl.style.transform = 'translateY(0)';
       subtitleEl.style.opacity = '1';
