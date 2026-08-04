@@ -630,6 +630,20 @@ button {
   border-bottom: 1px solid var(--glass-border);
 }
 
+.stats-intro {
+  max-width: 680px;
+  margin: 0 auto var(--space-xl);
+  text-align: center;
+}
+
+.stats-intro .section-label {
+  justify-content: center;
+}
+
+.stats-intro .section-desc {
+  margin-inline: auto;
+}
+
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1320,7 +1334,7 @@ button {
   }
 
   .stats-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .project-card {
@@ -1353,6 +1367,10 @@ button {
 @media (min-width: 1024px) {
   .nav {
     padding: var(--space-md) var(--space-2xl);
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(5, 1fr);
   }
 
   .nav.scrolled {
