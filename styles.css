@@ -356,8 +356,9 @@ button {
 .hero {
   position: relative;
   width: 100%;
-  height: 100vh;
-  height: 100dvh;
+  height: min(100dvh, 54rem);
+  min-height: 42rem;
+  background: #17130a;
   overflow: hidden;
 }
 
@@ -380,25 +381,20 @@ button {
 .hero-slide img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transform: scale(1.05);
-  transition: transform 8s linear;
+  object-fit: contain;
+  transform: none;
+  transition: none;
 }
 
 .hero-slide.active img {
-  transform: scale(1);
+  transform: none;
 }
 
 /* Overlays */
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.3) 0%,
-    rgba(0, 0, 0, 0.1) 40%,
-    rgba(0, 0, 0, 0.6) 100%
-  );
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.46));
   z-index: 2;
 }
 
@@ -411,6 +407,11 @@ button {
     rgba(0, 0, 0, 0.4) 100%
   );
   z-index: 2;
+}
+
+.stat-number-text {
+  font-size: clamp(1.35rem, 4vw, 2.5rem);
+  letter-spacing: -0.04em;
 }
 
 /* Hero Content */
@@ -537,6 +538,23 @@ button {
 @keyframes scrollBounce {
   0%, 100% { transform: translateX(-50%) translateY(0); }
   50%      { transform: translateX(-50%) translateY(8px); }
+}
+
+@media (max-width: 680px) {
+  .hero {
+    height: auto;
+    min-height: 39rem;
+  }
+
+  .hero-slide img {
+    object-fit: cover;
+    object-position: 62% center;
+  }
+
+  .hero-content {
+    padding-bottom: 5rem;
+    background: linear-gradient(to top, rgba(0,0,0,.88), transparent 65%);
+  }
 }
 
 /* ══════════════════════════════════════════

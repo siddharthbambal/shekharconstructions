@@ -80,6 +80,7 @@
   }
 
   function startSlideshow() {
+    if (slides.length < 2) return;
     clearInterval(slideInterval);
     slideInterval = setInterval(nextSlide, SLIDE_DURATION);
   }
@@ -271,6 +272,33 @@
   const formSuccess = document.getElementById('form-success');
   const btnSubmit = document.getElementById('btn-submit');
 
+  // Bambal Constructions enquiry options
+  function setBambalEnquiryType(type) {
+    const isHomeEnquiry = type === 'construction';
+    btnConstruction.classList.toggle('active', isHomeEnquiry);
+    btnArchitecture.classList.toggle('active', !isHomeEnquiry);
+    budgetField.style.display = isHomeEnquiry ? 'block' : 'none';
+    btnSubmit.textContent = isHomeEnquiry ? 'Submit Enquiry' : 'Request Consultation';
+    dynamicField.innerHTML = isHomeEnquiry ? `
+      <label class="form-label" for="enquiry-project">Interested Project</label>
+      <select class="form-select" id="enquiry-project">
+        <option value="">Select a project</option>
+        <option value="ish-sparsh">Ish Sparsh — 2–4 BHK</option>
+        <option value="shreeansh-residency">Shreeansh Residency — 2–4 BHK</option>
+        <option value="shiv-park">Shiv Park — 2–4 BHK</option>
+        <option value="shivantara-living">Shivantara Living — 2–4 BHK</option>
+        <option value="other">Other / General Enquiry</option>
+      </select>` : `
+      <label class="form-label" for="enquiry-service">Service Required</label>
+      <select class="form-select" id="enquiry-service">
+        <option value="">Select service</option>
+        <option value="architecture">Architectural Design & Planning</option>
+        <option value="interiors">Interior Design</option>
+        <option value="renovation">Renovation</option>
+        <option value="consultation">General Consultation</option>
+      </select>`;
+  }
+
   // Type toggle
   function setEnquiryType(type) {
     if (type === 'construction') {
@@ -280,10 +308,10 @@
         <label class="form-label" for="enquiry-project">Interested Project</label>
         <select class="form-select" id="enquiry-project">
           <option value="">Select a project</option>
-          <option value="skyline">Shekhar Skyline — 3 & 4 BHK</option>
-          <option value="horizon">Shekhar Horizon — Premium Villas</option>
-          <option value="grandeur">Shekhar Grandeur — 2 & 3 BHK</option>
-          <option value="serene">Shekhar Serene — Township</option>
+          <option value="ish-sparsh">Ish Sparsh — 2–4 BHK</option>
+          <option value="shreeansh-residency">Shreeansh Residency — 2–4 BHK</option>
+          <option value="shiv-park">Shiv Park — 2–4 BHK</option>
+          <option value="shivantara-living">Shivantara Living — 2–4 BHK</option>
           <option value="other">Other / General Enquiry</option>
         </select>
       `;
@@ -309,10 +337,10 @@
   }
 
   if (btnConstruction) {
-    btnConstruction.addEventListener('click', () => setEnquiryType('construction'));
+    btnConstruction.addEventListener('click', () => setBambalEnquiryType('construction'));
   }
   if (btnArchitecture) {
-    btnArchitecture.addEventListener('click', () => setEnquiryType('architecture'));
+    btnArchitecture.addEventListener('click', () => setBambalEnquiryType('architecture'));
   }
 
   // Form submission
@@ -340,7 +368,7 @@
           btnSubmit.textContent = 'Submit Enquiry';
           btnSubmit.disabled = false;
           btnSubmit.style.opacity = '1';
-          setEnquiryType('construction');
+          setBambalEnquiryType('construction');
         }, 5000);
       }, 1500);
     });
@@ -416,7 +444,7 @@
         if (nameEl) {
           const projectName = nameEl.textContent.trim();
           const text = encodeURIComponent(`Hello, I would like to enquire about ${projectName}`);
-          window.open(`https://wa.me/917745027821?text=${text}`, '_blank', 'noopener,noreferrer');
+          window.open(`https://wa.me/919766660230?text=${text}`, '_blank', 'noopener,noreferrer');
         }
       });
     });
