@@ -364,34 +364,93 @@
     btnArchitecture.addEventListener('click', () => setBambalEnquiryType('architecture'));
   }
 
-  // Form submission
+  // Form submission — Web3Forms Email Dispatch & WhatsApp Lead Redirect
   if (enquiryForm) {
-    enquiryForm.addEventListener('submit', (e) => {
+    enquiryForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
+      // Collect form data
+      const name = document.getElementById('enquiry-name')?.value.trim() || 'N/A';
+      const phone = document.getElementById('enquiry-phone')?.value.trim() || 'N/A';
+      const email = document.getElementById('enquiry-email')?.value.trim() || 'N/A';
+      
+      const typeToggle = document.querySelector('.enquiry-type-btn.active');
+      const enquiryType = typeToggle ? typeToggle.textContent.trim() : 'General';
+      
+      const projectSelect = document.getElementById('enquiry-project');
+      const selectedProject = projectSelect && projectSelect.options[projectSelect.selectedIndex] ? projectSelect.options[projectSelect.selectedIndex].text : 'N/A';
+      
+      const budgetSelect = document.getElementById('enquiry-budget');
+      const selectedBudget = budgetSelect && budgetSelect.options[budgetSelect.selectedIndex] && budgetSelect.value ? budgetSelect.options[budgetSelect.selectedIndex].text : 'N/A';
+      
+      const userMessage = document.getElementById('enquiry-message')?.value.trim() || 'None';
+
       // Button loading state
-      btnSubmit.textContent = 'Sending...';
+      const originalBtnText = btnSubmit.textContent;
+      btnSubmit.textContent = 'Sending Enquiry...';
       btnSubmit.disabled = true;
       btnSubmit.style.opacity = '0.7';
 
-      // Simulate submission
-      setTimeout(() => {
-        enquiryForm.style.display = 'none';
-        document.querySelector('.enquiry-type-toggle').style.display = 'none';
-        formSuccess.classList.add('show');
+      // Construct formatted WhatsApp message for instant notification
+      let waMessage = `*NEW WEBSITE ENQUIRY*\n----------------------\n`;
+      waMessage += `*Name:* ${name}\n`;
+      waMessage += `*Phone:* ${phone}\n`;
+      waMessage += `*Email:* ${email}\n`;
+      waMessage += `*Type:* ${enquiryType}\n`;
+      if (selectedProject !== 'N/A' && selectedProject !== 'Select a project') {
+        waMessage += `*Requirement:* ${selectedProject}\n`;
+      }
+      if (selectedBudget !== 'N/A' && selectedBudget !== 'Select budget range') {
+        waMessage += `*Budget:* ${selectedBudget}\n`;
+      }
+      if (userMessage !== 'None') {
+        waMessage += `*Message:* ${userMessage}\n`;
+      }
 
-        // Reset after 5 seconds
-        setTimeout(() => {
-          enquiryForm.reset();
-          enquiryForm.style.display = 'block';
-          document.querySelector('.enquiry-type-toggle').style.display = 'flex';
-          formSuccess.classList.remove('show');
-          btnSubmit.textContent = 'Submit Enquiry';
-          btnSubmit.disabled = false;
-          btnSubmit.style.opacity = '1';
-          setBambalEnquiryType('construction');
-        }, 5000);
-      }, 1500);
+      // 1. Submit to Web3Forms API to deliver emails to siddharthbambal10@gmail.com, shekharconstructions@gmail.com, bambalinfrastructure@gmail.com
+      try {
+        const formData = new FormData();
+        formData.append("access_key", "58f4a9b5-4122-4467-9377-50fb7bdfed97"); // Web3Forms Public Key configured for your emails
+        formData.append("subject", `New Web Lead: ${name} (${enquiryType})`);
+        formData.append("from_name", "Bambal Infrastructure Website");
+        formData.append("to_email", "siddharthbambal10@gmail.com, shekharconstructions@gmail.com, bambalinfrastructure@gmail.com");
+        formData.append("Name", name);
+        formData.append("Phone", phone);
+        formData.append("Email", email);
+        formData.append("Enquiry Type", enquiryType);
+        formData.append("Project / Service", selectedProject);
+        formData.append("Budget Range", selectedBudget);
+        formData.append("Message", userMessage);
+
+        fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: formData
+        }).catch(err => console.log("Background email submission error:", err));
+      } catch (err) {
+        console.log("Web3Forms error:", err);
+      }
+
+      // 2. Display success UI state
+      enquiryForm.style.display = 'none';
+      const toggleEl = document.querySelector('.enquiry-type-toggle');
+      if (toggleEl) toggleEl.style.display = 'none';
+      if (formSuccess) formSuccess.classList.add('show');
+
+      // 3. Automatically open WhatsApp to immediately alert you (+91 77450 27821)
+      const encodedWaText = encodeURIComponent(waMessage);
+      window.open(`https://wa.me/917745027821?text=${encodedWaText}`, '_blank', 'noopener,noreferrer');
+
+      // Reset form after delay
+      setTimeout(() => {
+        enquiryForm.reset();
+        enquiryForm.style.display = 'block';
+        if (toggleEl) toggleEl.style.display = 'flex';
+        if (formSuccess) formSuccess.classList.remove('show');
+        btnSubmit.textContent = originalBtnText;
+        btnSubmit.disabled = false;
+        btnSubmit.style.opacity = '1';
+        setBambalEnquiryType('construction');
+      }, 5000);
     });
   }
 
