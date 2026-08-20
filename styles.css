@@ -963,31 +963,50 @@ button {
 /* Mobile-First Alignment & Spacing Rules */
 @media (max-width: 860px) {
   .timeline-editorial {
-    gap: var(--space-md);
+    gap: 1.5rem;
     margin-top: var(--space-lg);
+    padding-left: 0.5rem;
   }
+
+  /* Distinctive left vertical timeline spine on mobile */
   .timeline-editorial::before {
-    left: 14px;
+    display: block !important;
+    left: 15px;
+    top: 15px;
+    bottom: 15px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--clr-accent) 0%, rgba(201, 169, 110, 0.4) 80%, transparent 100%);
   }
+
   .timeline-milestone {
-    padding-left: 36px;
+    padding-left: 44px; /* Generous gap between timeline spine bullet and content box */
     text-align: left;
   }
+
+  /* Glowing node bullet centered on vertical spine */
   .timeline-milestone::after {
+    display: block !important;
     left: 9px;
-    top: 16px;
-    width: 10px;
-    height: 10px;
+    top: 20px;
+    width: 14px;
+    height: 14px;
+    border-width: 3px;
+    background: var(--clr-bg-deep);
+    box-shadow: 0 0 10px rgba(201, 169, 110, 0.5);
   }
+
   .milestone-header-inline {
     flex-wrap: wrap;
     gap: var(--space-xs);
     margin-bottom: var(--space-xs);
     justify-content: flex-start;
   }
+
   .milestone-badge {
     justify-content: flex-start;
   }
+
+  /* Generous internal box padding so text never touches card borders */
   .milestone-hero,
   .milestone-feature,
   .milestone-card,
@@ -995,77 +1014,100 @@ button {
   .milestone-stat-hero,
   .milestone-stat-grand,
   .milestone-future {
-    padding: var(--space-md) var(--space-md);
+    padding: var(--space-lg) var(--space-md) !important;
     text-align: left;
+    border-radius: var(--radius-md);
   }
+
   .grand-grid, .milestone-grid {
     grid-template-columns: 1fr;
     gap: var(--space-sm);
     text-align: left;
   }
+
   .grand-number-col {
     align-items: flex-start;
   }
+
   .location-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-xs);
   }
+
   .location-card {
-    padding: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
     text-align: left;
   }
+
   .stat-hero-watermark {
-    font-size: 6rem;
-    right: -10px;
-    bottom: -15px;
+    font-size: 5rem;
+    right: -5px;
+    bottom: -10px;
   }
 }
 
 @media (max-width: 520px) {
   .journey {
-    padding-top: var(--space-xl);
-    padding-bottom: var(--space-xl);
+    padding-top: var(--space-2xl);
+    padding-bottom: var(--space-2xl);
   }
+
   .timeline-editorial {
-    gap: 1rem;
-    margin-top: 1rem;
+    gap: 1.25rem;
+    padding-left: 0;
   }
-  /* Mobile timeline spine & clean left bullet alignment */
+
+  /* Mobile timeline spine & glowing node bullet styling */
   .timeline-editorial::before {
-    display: block;
-    left: 10px;
-    top: 10px;
-    bottom: 10px;
+    left: 11px;
   }
+
   .timeline-milestone {
-    padding-left: 28px;
-    text-align: left;
+    padding-left: 36px; /* Ensures spacious margin between vertical spine line and content box */
   }
+
   .timeline-milestone::after {
-    display: block;
-    left: 5px;
-    top: 14px;
-    width: 10px;
-    height: 10px;
+    left: 6px;
+    top: 18px;
+    width: 12px;
+    height: 12px;
   }
+
+  /* Extra internal breathing room for cards */
+  .milestone-hero,
+  .milestone-feature,
+  .milestone-card,
+  .milestone-recognition,
+  .milestone-stat-hero,
+  .milestone-stat-grand,
+  .milestone-future {
+    padding: 1.25rem 1rem !important; /* 16px horizontal internal padding guarantee */
+  }
+
   .milestone-year {
     font-size: 1.25rem;
   }
+
   .milestone-category {
     font-size: 0.65rem;
   }
+
   .grand-number {
     font-size: 2.8rem;
   }
+
   .milestone-headline, .milestone-title {
-    font-size: 1.15rem;
+    font-size: 1.12rem;
     text-align: left;
+    line-height: 1.35;
   }
+
   .milestone-body {
     font-size: 0.85rem;
     line-height: 1.55;
     text-align: left;
   }
+
   .capability-pills, .city-chips {
     justify-content: flex-start;
   }
