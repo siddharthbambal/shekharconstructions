@@ -810,15 +810,70 @@ button {
 .milestone-card,
 .milestone-recognition {
   background: rgba(22, 22, 22, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-lg);
   padding: var(--space-xl);
   backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .milestone-hero {
-  border-color: rgba(201, 169, 110, 0.25);
-  background: linear-gradient(135deg, rgba(28, 25, 20, 0.7), rgba(18, 18, 18, 0.8));
+  border-color: rgba(201, 169, 110, 0.35);
+  background: linear-gradient(135deg, rgba(30, 26, 18, 0.85), rgba(16, 16, 16, 0.9));
+}
+
+/* Card Theme Variations for visual rhythm & personality */
+.milestone-card.theme-warm {
+  background: linear-gradient(135deg, rgba(35, 28, 18, 0.75), rgba(20, 18, 14, 0.85));
+  border-left: 3px solid #d4af37;
+}
+
+.milestone-card.theme-light {
+  background: linear-gradient(135deg, #f8f6f0 0%, #ede8dd 100%);
+  border: 1px solid rgba(201, 169, 110, 0.4);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+.milestone-card.theme-light .milestone-year {
+  color: #8c6d28;
+}
+
+.milestone-card.theme-light .milestone-category {
+  color: #6e6454;
+}
+
+.milestone-card.theme-light .milestone-title {
+  color: #1a1815;
+}
+
+.milestone-card.theme-light .milestone-body {
+  color: #33302b;
+}
+
+.milestone-card.theme-light .milestone-quote {
+  color: #735719;
+  border-left-color: #8c6d28;
+}
+
+.milestone-stat-hero.theme-dark-gold {
+  background: linear-gradient(135deg, rgba(45, 36, 20, 0.9), rgba(18, 16, 12, 0.95));
+  border: 1px solid rgba(212, 175, 55, 0.4);
+}
+
+.milestone-card.theme-subtle-blue {
+  background: linear-gradient(135deg, rgba(18, 25, 35, 0.8), rgba(12, 16, 22, 0.9));
+  border: 1px solid rgba(100, 150, 220, 0.25);
+  border-left: 3px solid #4a90e2;
+}
+
+.milestone-card.theme-subtle-blue .milestone-year {
+  color: #64b5f6;
+}
+
+.milestone-recognition {
+  border-left: 4px solid #e0c992;
+  background: linear-gradient(90deg, rgba(201, 169, 110, 0.15) 0%, rgba(25, 23, 20, 0.7) 100%);
+  box-shadow: 0 4px 25px rgba(201, 169, 110, 0.1);
 }
 
 .milestone-grid {
@@ -830,17 +885,17 @@ button {
 
 .milestone-headline, .milestone-title {
   font-family: var(--ff-display);
-  font-size: 1.45rem;
+  font-size: 1.35rem;
   font-weight: 500;
   color: var(--clr-white);
   line-height: 1.35;
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-xs);
 }
 
 .milestone-body {
   color: var(--clr-text);
-  font-size: 0.95rem;
-  line-height: 1.75;
+  font-size: 0.92rem;
+  line-height: 1.65;
 }
 
 .milestone-body strong {
@@ -850,9 +905,9 @@ button {
 
 .milestone-subtext {
   color: var(--clr-text-muted);
-  font-size: 0.88rem;
-  line-height: 1.65;
-  margin-top: var(--space-sm);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin-top: var(--space-xs);
 }
 
 /* Stat Box Component */
@@ -861,17 +916,17 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(201, 169, 110, 0.08);
-  border: 1px solid rgba(201, 169, 110, 0.2);
-  padding: var(--space-lg) var(--space-xl);
+  background: rgba(201, 169, 110, 0.12);
+  border: 1px solid rgba(201, 169, 110, 0.3);
+  padding: var(--space-md) var(--space-lg);
   border-radius: var(--radius-md);
   text-align: center;
-  min-width: 140px;
+  min-width: 120px;
 }
 
 .stat-number {
   font-family: var(--ff-display);
-  font-size: 3rem;
+  font-size: 2.6rem;
   font-weight: 700;
   line-height: 1;
   color: var(--clr-accent);
@@ -879,12 +934,12 @@ button {
 
 .stat-label {
   font-family: var(--ff-heading);
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--clr-text-muted);
-  margin-top: 6px;
+  margin-top: 4px;
 }
 
 /* Highlight Bar */
@@ -892,33 +947,103 @@ button {
   display: flex;
   align-items: center;
   gap: var(--space-md);
-  margin-top: var(--space-md);
-  padding-top: var(--space-md);
-  border-top: 1px dashed rgba(255, 255, 255, 0.1);
+  margin-top: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: 1px dashed rgba(255, 255, 255, 0.12);
 }
 
 .highlight-count {
   font-family: var(--ff-display);
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: var(--clr-accent);
 }
 
 .highlight-desc {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: var(--clr-text-muted);
-  line-height: 1.5;
+  line-height: 1.45;
 }
 
 /* Quote */
 .milestone-quote {
   font-family: var(--ff-display);
   font-style: italic;
-  font-size: 1.05rem;
+  font-size: 0.98rem;
   color: var(--clr-accent-light);
   border-left: 2px solid var(--clr-accent);
   padding-left: var(--space-md);
-  margin-top: var(--space-md);
+  margin-top: var(--space-sm);
+}
+
+/* Responsive adjustments for editorial timeline mobile optimization */
+@media (max-width: 860px) {
+  .timeline-editorial {
+    gap: var(--space-lg);
+    margin-top: var(--space-xl);
+  }
+  .timeline-editorial::before {
+    left: 16px;
+  }
+  .timeline-milestone {
+    padding-left: 42px;
+  }
+  .timeline-milestone::after {
+    left: 11px;
+    top: 18px;
+    width: 10px;
+    height: 10px;
+  }
+  .milestone-hero,
+  .milestone-feature,
+  .milestone-card,
+  .milestone-recognition,
+  .milestone-stat-hero,
+  .milestone-stat-grand,
+  .milestone-future {
+    padding: var(--space-md) var(--space-lg);
+  }
+  .grand-grid, .milestone-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+  .location-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
+  }
+  .stat-hero-watermark {
+    font-size: 7rem;
+    right: -10px;
+    bottom: -15px;
+  }
+}
+
+@media (max-width: 520px) {
+  .journey {
+    padding-top: var(--space-2xl);
+    padding-bottom: var(--space-2xl);
+  }
+  .timeline-editorial::before {
+    display: none;
+  }
+  .timeline-milestone {
+    padding-left: 0;
+  }
+  .timeline-milestone::after {
+    display: none;
+  }
+  .location-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grand-number {
+    font-size: 3.2rem;
+  }
+  .milestone-headline, .milestone-title {
+    font-size: 1.2rem;
+  }
+  .milestone-body {
+    font-size: 0.88rem;
+  }
 }
 
 /* 500 Projects Stat Hero */
