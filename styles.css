@@ -679,88 +679,551 @@ button {
 /* ══════════════════════════════════════════
    ONGOING PROJECTS
    ══════════════════════════════════════════ */
+/* ══════════════════════════════════════════
+   EDITORIAL TIMELINE — OUR JOURNEY
+   ══════════════════════════════════════════ */
 .journey {
-  background: linear-gradient(180deg, #0d0d0d, #15130f);
-}
-
-.timeline {
+  background: linear-gradient(180deg, #0a0a0a 0%, #121110 50%, #0d0c0a 100%);
   position: relative;
-  display: grid;
-  gap: var(--space-lg);
+  overflow: hidden;
+  padding-top: var(--space-4xl);
+  padding-bottom: var(--space-4xl);
 }
 
-.timeline::before {
+.journey::before {
   content: '';
   position: absolute;
-  top: 12px;
-  bottom: 12px;
-  left: 59px;
-  width: 1px;
-  background: linear-gradient(to bottom, transparent, var(--clr-accent), transparent);
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  background: radial-gradient(circle at 50% 20%, rgba(201, 169, 110, 0.05) 0%, transparent 60%);
+  pointer-events: none;
 }
 
-.timeline-item {
-  display: grid;
-  grid-template-columns: 48px 24px 1fr;
-  gap: var(--space-sm);
-  align-items: start;
+.timeline-editorial {
+  max-width: 1000px;
+  margin: var(--space-3xl) auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
   position: relative;
 }
 
-.timeline-year {
-  color: var(--clr-accent-light);
-  font-family: var(--ff-heading);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  padding-top: 2px;
+/* Central subtle vertical spine for desktop */
+.timeline-editorial::before {
+  content: '';
+  position: absolute;
+  top: 40px;
+  bottom: 40px;
+  left: 32px;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(201, 169, 110, 0.3) 15%, rgba(201, 169, 110, 0.3) 85%, transparent);
 }
 
-.timeline-marker {
-  width: 12px;
-  height: 12px;
-  margin: 4px auto 0;
-  border: 2px solid var(--clr-accent);
+/* Base Milestone Item */
+.timeline-milestone {
+  position: relative;
+  padding-left: 72px;
+  transition: transform var(--dur-normal) var(--ease-out);
+}
+
+/* Milestone Badges & Pills */
+.milestone-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.milestone-year-pill {
+  font-family: var(--ff-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--clr-accent-light);
+  background: rgba(201, 169, 110, 0.12);
+  border: 1px solid rgba(201, 169, 110, 0.3);
+  padding: 4px 14px;
+  border-radius: var(--radius-full);
+}
+
+.milestone-year-pill.future-pill {
+  background: linear-gradient(135deg, rgba(201, 169, 110, 0.25), rgba(224, 201, 146, 0.1));
+  border-color: var(--clr-accent);
+  color: var(--clr-white);
+  box-shadow: 0 0 15px rgba(201, 169, 110, 0.2);
+}
+
+.milestone-tag {
+  font-family: var(--ff-heading);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--clr-text-muted);
+}
+
+.milestone-header-inline {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xs);
+}
+
+.milestone-year {
+  font-family: var(--ff-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--clr-accent);
+}
+
+.milestone-category {
+  font-family: var(--ff-heading);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--clr-text-subtle);
+}
+
+/* Timeline Node Bullet Marker */
+.timeline-milestone::after {
+  content: '';
+  position: absolute;
+  top: 14px;
+  left: 27px;
+  width: 11px;
+  height: 11px;
   border-radius: 50%;
   background: var(--clr-bg-deep);
-  z-index: 1;
+  border: 2px solid var(--clr-accent);
+  box-shadow: 0 0 0 4px rgba(10, 10, 10, 0.9);
+  z-index: 2;
 }
 
-.timeline-item:last-child .timeline-marker { background: var(--clr-accent); box-shadow: 0 0 0 5px rgba(201,169,110,0.12); }
-
-.timeline-content {
-  padding: 0 0 var(--space-lg) var(--space-md);
+/* Hero & Featured Milestone Cards */
+.milestone-hero,
+.milestone-feature,
+.milestone-card,
+.milestone-recognition {
+  background: rgba(22, 22, 22, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  backdrop-filter: blur(10px);
 }
 
-.timeline-content span {
-  color: var(--clr-accent);
-  font-family: var(--ff-heading);
-  font-size: 0.64rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+.milestone-hero {
+  border-color: rgba(201, 169, 110, 0.25);
+  background: linear-gradient(135deg, rgba(28, 25, 20, 0.7), rgba(18, 18, 18, 0.8));
 }
 
-.timeline-content h3 {
-  margin: 3px 0 var(--space-xs);
-  color: var(--clr-white);
+.milestone-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-xl);
+  align-items: center;
+}
+
+.milestone-headline, .milestone-title {
   font-family: var(--ff-display);
-  font-size: 1.25rem;
+  font-size: 1.45rem;
   font-weight: 500;
+  color: var(--clr-white);
+  line-height: 1.35;
+  margin-bottom: var(--space-md);
 }
 
-.timeline-content p, .timeline-note, .partners-note {
+.milestone-body {
+  color: var(--clr-text);
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+.milestone-body strong {
+  color: var(--clr-accent-light);
+  font-weight: 600;
+}
+
+.milestone-subtext {
   color: var(--clr-text-muted);
+  font-size: 0.88rem;
+  line-height: 1.65;
+  margin-top: var(--space-sm);
+}
+
+/* Stat Box Component */
+.milestone-stat-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(201, 169, 110, 0.08);
+  border: 1px solid rgba(201, 169, 110, 0.2);
+  padding: var(--space-lg) var(--space-xl);
+  border-radius: var(--radius-md);
+  text-align: center;
+  min-width: 140px;
+}
+
+.stat-number {
+  font-family: var(--ff-display);
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--clr-accent);
+}
+
+.stat-label {
+  font-family: var(--ff-heading);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--clr-text-muted);
+  margin-top: 6px;
+}
+
+/* Highlight Bar */
+.milestone-highlight-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.highlight-count {
+  font-family: var(--ff-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--clr-accent);
+}
+
+.highlight-desc {
   font-size: 0.85rem;
+  color: var(--clr-text-muted);
+  line-height: 1.5;
+}
+
+/* Quote */
+.milestone-quote {
+  font-family: var(--ff-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--clr-accent-light);
+  border-left: 2px solid var(--clr-accent);
+  padding-left: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+/* 500 Projects Stat Hero */
+.milestone-stat-hero {
+  position: relative;
+  background: linear-gradient(135deg, rgba(25, 22, 18, 0.8), rgba(15, 15, 15, 0.9));
+  border: 1px solid rgba(201, 169, 110, 0.3);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl);
+  overflow: hidden;
+}
+
+.stat-hero-watermark {
+  position: absolute;
+  right: -20px;
+  bottom: -40px;
+  font-family: var(--ff-display);
+  font-size: 14rem;
+  font-weight: 700;
+  color: rgba(201, 169, 110, 0.04);
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+}
+
+.capability-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs) var(--space-sm);
+  margin-top: var(--space-lg);
+}
+
+.capability-pills span {
+  font-family: var(--ff-heading);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--clr-text);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 5px 14px;
+  border-radius: var(--radius-full);
+}
+
+/* City Chips */
+.city-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs) var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+.city-chip {
+  font-family: var(--ff-heading);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--clr-white);
+  background: rgba(201, 169, 110, 0.1);
+  border: 1px solid rgba(201, 169, 110, 0.2);
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+}
+
+.city-chip.foreign {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: var(--clr-accent-light);
+}
+
+/* Recognition Card */
+.milestone-recognition {
+  border-left: 3px solid var(--clr-accent);
+  background: linear-gradient(90deg, rgba(201, 169, 110, 0.08) 0%, rgba(20, 20, 20, 0.5) 100%);
+}
+
+/* 1,000 Projects Grand Anchor */
+.milestone-stat-grand {
+  background: linear-gradient(135deg, rgba(32, 28, 20, 0.95), rgba(18, 16, 12, 0.95));
+  border: 1px solid var(--clr-accent);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), var(--shadow-glow);
+  position: relative;
+}
+
+.milestone-stat-grand::after {
+  background: var(--clr-accent);
+  box-shadow: 0 0 12px var(--clr-accent);
+  width: 15px;
+  height: 15px;
+  left: 25px;
+}
+
+.grand-badge-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.grand-year {
+  font-family: var(--ff-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--clr-accent-light);
+}
+
+.grand-tag {
+  font-family: var(--ff-heading);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--clr-black);
+  background: var(--clr-accent);
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+}
+
+.grand-grid {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: var(--space-2xl);
+  align-items: center;
+}
+
+.grand-number-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.grand-number {
+  font-family: var(--ff-display);
+  font-size: 4.5rem;
+  font-weight: 700;
+  line-height: 0.9;
+  color: var(--clr-accent-light);
+  text-shadow: 0 2px 20px rgba(201, 169, 110, 0.3);
+}
+
+.grand-number-label {
+  font-family: var(--ff-heading);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--clr-text-muted);
+  margin-top: 10px;
+}
+
+.grand-title {
+  font-family: var(--ff-display);
+  font-size: 1.65rem;
+  font-weight: 500;
+  color: var(--clr-white);
+  line-height: 1.3;
+  margin-bottom: var(--space-sm);
+}
+
+.grand-body {
+  color: var(--clr-text);
+  font-size: 0.95rem;
   line-height: 1.7;
 }
 
-.timeline-note {
-  max-width: 600px;
-  margin-top: var(--space-xl);
+.grand-highlight {
+  font-family: var(--ff-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--clr-accent);
+  margin-top: var(--space-md);
+  padding-top: var(--space-sm);
+  border-top: 1px solid rgba(201, 169, 110, 0.25);
+}
+
+/* 2026 Future Milestone */
+.milestone-future {
+  position: relative;
+  background: linear-gradient(180deg, rgba(25, 23, 20, 0.9), rgba(12, 12, 12, 0.95));
+  border: 1px solid rgba(201, 169, 110, 0.4);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl);
+  overflow: hidden;
+}
+
+.milestone-future::after {
+  background: var(--clr-accent-light);
+  box-shadow: 0 0 10px var(--clr-accent-light);
+}
+
+.future-title {
+  font-family: var(--ff-display);
+  font-size: 1.6rem;
+  color: var(--clr-white);
+  margin-bottom: var(--space-md);
+}
+
+.future-body {
+  color: var(--clr-text);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.location-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.location-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.location-card span {
+  font-family: var(--ff-heading);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--clr-accent);
+  letter-spacing: 0.1em;
+}
+
+.location-card strong {
+  font-family: var(--ff-heading);
+  font-size: 0.9rem;
+  color: var(--clr-white);
+}
+
+.future-generation {
+  font-size: 0.92rem;
+  color: var(--clr-text-muted);
+  line-height: 1.7;
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.future-generation strong {
+  color: var(--clr-accent-light);
+}
+
+.future-closing-tagline {
+  margin-top: var(--space-lg);
   padding: var(--space-md) var(--space-lg);
-  border-left: 2px solid var(--clr-accent);
-  background: rgba(201,169,110,0.06);
+  background: rgba(201, 169, 110, 0.1);
+  border: 1px solid rgba(201, 169, 110, 0.25);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.future-closing-tagline span {
+  font-family: var(--ff-display);
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--clr-accent-light);
+}
+
+/* Responsive adjustments for editorial timeline */
+@media (max-width: 860px) {
+  .timeline-editorial::before {
+    left: 20px;
+  }
+  .timeline-milestone {
+    padding-left: 48px;
+  }
+  .timeline-milestone::after {
+    left: 15px;
+  }
+  .grand-grid, .milestone-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+  .location-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .stat-hero-watermark {
+    font-size: 8rem;
+    right: -10px;
+    bottom: -20px;
+  }
+}
+
+@media (max-width: 520px) {
+  .timeline-editorial::before {
+    display: none;
+  }
+  .timeline-milestone {
+    padding-left: 0;
+  }
+  .timeline-milestone::after {
+    display: none;
+  }
+  .location-grid {
+    grid-template-columns: 1fr;
+  }
+  .grand-number {
+    font-size: 3.5rem;
+  }
 }
 
 .projects {
@@ -1539,32 +2002,6 @@ button {
   .stats-grid {
     grid-template-columns: repeat(3, 1fr);
   }
-
-  .timeline {
-    grid-template-columns: repeat(5, 1fr);
-    gap: var(--space-md);
-  }
-
-  .timeline::before {
-    top: 35px;
-    bottom: auto;
-    left: 9%;
-    right: 9%;
-    width: auto;
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--clr-accent), transparent);
-  }
-
-  .timeline-item {
-    display: block;
-    text-align: center;
-  }
-
-  .timeline-year { padding: 0; }
-  .timeline-marker { margin: var(--space-sm) auto var(--space-lg); }
-  .timeline-content { padding: 0; }
-  .timeline-content h3 { font-size: 1.1rem; }
-  .timeline-content p { font-size: 0.8rem; }
 
   .leaders-grid, .partners-grid {
     grid-template-columns: repeat(3, 1fr);
