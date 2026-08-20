@@ -465,7 +465,7 @@
         if (nameEl) {
           const projectName = nameEl.textContent.trim();
           const text = encodeURIComponent(`Hello, I would like to enquire about ${projectName}`);
-          window.open(`https://wa.me/919766660230?text=${text}`, '_blank', 'noopener,noreferrer');
+          window.open(`https://wa.me/917745027821?text=${text}`, '_blank', 'noopener,noreferrer');
         }
       });
     });

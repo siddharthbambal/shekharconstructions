@@ -1958,6 +1958,131 @@ button {
   color: var(--clr-text-muted);
 }
 
+/* Direct Contact Reach Box */
+.direct-reach-box {
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-xl);
+  border-top: 1px dashed var(--glass-border);
+}
+
+.direct-reach-title {
+  font-family: var(--ff-heading);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--clr-text-subtle);
+  margin-bottom: var(--space-md);
+  text-align: center;
+}
+
+.phone-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.phone-chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--clr-bg-deep);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  font-family: var(--ff-heading);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--clr-text);
+  transition: all var(--dur-fast) var(--ease-out);
+}
+
+.phone-chip.primary-phone {
+  border-color: rgba(201, 169, 110, 0.4);
+  color: var(--clr-accent-light);
+  background: rgba(201, 169, 110, 0.06);
+}
+
+.phone-chip:hover {
+  border-color: var(--clr-accent);
+  color: var(--clr-accent-light);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.phone-chip svg {
+  width: 14px;
+  height: 14px;
+  color: var(--clr-accent);
+}
+
+.social-direct-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  justify-content: center;
+}
+
+.social-direct-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  font-family: var(--ff-heading);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  transition: all var(--dur-fast) var(--ease-out);
+}
+
+.social-direct-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.social-direct-btn.wa-btn {
+  background: rgba(37, 211, 102, 0.12);
+  border: 1px solid rgba(37, 211, 102, 0.3);
+  color: #25D366;
+}
+
+.social-direct-btn.wa-btn:hover {
+  background: #25D366;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.25);
+}
+
+.social-direct-btn.insta-btn {
+  background: rgba(225, 48, 108, 0.12);
+  border: 1px solid rgba(225, 48, 108, 0.3);
+  color: #e1306c;
+}
+
+.social-direct-btn.insta-btn:hover {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: #fff;
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(225, 48, 108, 0.3);
+}
+
+.social-direct-btn.fb-btn {
+  background: rgba(24, 119, 242, 0.12);
+  border: 1px solid rgba(24, 119, 242, 0.3);
+  color: #1877f2;
+}
+
+.social-direct-btn.fb-btn:hover {
+  background: #1877f2;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(24, 119, 242, 0.3);
+}
+
 /* ══════════════════════════════════════════
    TESTIMONIAL / BRAND STRIP
    ══════════════════════════════════════════ */
