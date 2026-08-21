@@ -155,19 +155,13 @@
     <div class="section-header reveal">
       <div class="section-label">Portfolio</div>
       <h2 class="section-title">Our Flagship <em>Developments</em></h2>
-      <p class="section-desc">Explore our ongoing residences and upcoming landmarks across Nagpur’s most sought-after locations.</p>
-      
-      <!-- Portfolio Filter Tabs -->
-      <div class="project-tabs" id="project-tabs">
-        <button class="project-tab-btn active" data-tab="ongoing">Ongoing Projects</button>
-        <button class="project-tab-btn" data-tab="upcoming">Upcoming Launches</button>
-      </div>
+      <p class="section-desc">Explore our active residential projects and upcoming landmarks across Nagpur’s most sought-after locations.</p>
     </div>
 
-    <!-- ONGOING PROJECTS GRID -->
-    <div class="projects-grid tab-content active" id="tab-ongoing">
+    <!-- UNIFIED PROJECTS GRID -->
+    <div class="projects-grid">
       
-      <!-- Ongoing Project 1: Shiv Sparsh Villa -->
+      <!-- Project 1: Shiv Sparsh Villa -->
       <article class="project-card reveal">
         <div class="project-card-img">
           <img src="images/projects/shiv%20sparsh%20villa%20ready%20possesion%20redy%20to%20move%20in%20-%20just%20behind%20hotel%20pride%20,%20new%20manish%20nagar%20just%201%20flat%20remaining%203bhk%20,%20all%20rooms%20balcony%20,%20hall%20balcony%20,%20kitchen%20terrace.png" alt="Shiv Sparsh Villa" />
@@ -205,7 +199,7 @@
         </div>
       </article>
 
-      <!-- Ongoing Project 2: Shiv Subah Villas -->
+      <!-- Project 2: Shiv Subah Villas -->
       <article class="project-card reveal reveal-delay-1">
         <div class="project-card-img">
           <img src="images/projects/shiv%20subah%20villas%20-%20one%20floor%20one%20flat%20-%20onl%203%20remaining%20flats%20possesion%20in%20early2027%203bhk.png" alt="Shiv Subah Villas" />
@@ -232,7 +226,7 @@
             </div>
           </div>
           <div class="project-card-actions">
-            <button class="btn-floorplan" data-plan-title="Shiv Subah Villas — Floor Plan" data-plan-img="images/projects/shiv%20shubha%20villa%20floor%20plan.png" data-alt-img="images/projects/shiv%20shubha%20villa%20floor%20plan%20isometric.png">
+            <button class="btn-floorplan" data-plan-title="Shiv Subah Villas — Floor Plan" data-plan-img="images/projects/shiv%20shubha%20villa%20floor%20plan.png">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
               View Floor Plan
             </button>
@@ -243,13 +237,8 @@
         </div>
       </article>
 
-    </div>
-
-    <!-- UPCOMING LAUNCHES GRID -->
-    <div class="projects-grid tab-content" id="tab-upcoming" style="display: none;">
-      
-      <!-- Upcoming Project 1: Shivtara Towers -->
-      <article class="project-card reveal">
+      <!-- Project 3: Shivtara Towers -->
+      <article class="project-card reveal reveal-delay-2">
         <div class="project-card-img">
           <img src="images/projects/Shivtara%20towers-%20%20tower%201%20tower%202-shambhu%20nagar%202%20mins%20from%20jaripatka%20launching%20this%20october%203bhk%20most%20indemand%20area.png" alt="Shivtara Towers" />
           <span class="project-badge status-upcoming">Launching October 2026</span>
@@ -282,8 +271,8 @@
         </div>
       </article>
 
-      <!-- Upcoming Project 2: Shiv Kunj -->
-      <article class="project-card reveal reveal-delay-1">
+      <!-- Project 4: Shiv Kunj -->
+      <article class="project-card reveal">
         <div class="project-card-img">
           <img src="images/projects/shiv%20kunj%20-%20arya%20nagar%20launching%20soon.png" alt="Shiv Kunj" />
           <span class="project-badge status-upcoming">Launching Soon</span>
@@ -316,8 +305,8 @@
         </div>
       </article>
 
-      <!-- Upcoming Project 3: Sapphire Tower -->
-      <article class="project-card reveal reveal-delay-2">
+      <!-- Project 5: Sapphire Tower -->
+      <article class="project-card reveal reveal-delay-1">
         <div class="project-card-img">
           <img src="images/projects/sapphire%20tower%20area%20-%20dabhaa,%20laaunching%20soon.jpeg" alt="Sapphire Tower" />
           <span class="project-badge status-upcoming">Launching Soon</span>
@@ -360,10 +349,6 @@
       <button class="floorplan-modal-close" id="floorplan-close" aria-label="Close modal">&times;</button>
       <div class="floorplan-modal-header">
         <h3 id="floorplan-title">Project Floor Plan</h3>
-        <div class="floorplan-toggle-btns" id="floorplan-toggle-container" style="display: none;">
-          <button class="plan-toggle-btn active" id="btn-plan-2d">2D Layout</button>
-          <button class="plan-toggle-btn" id="btn-plan-3d">3D Isometric View</button>
-        </div>
       </div>
       <div class="floorplan-modal-body">
         <img id="floorplan-image" src="" alt="Floor Plan" />
