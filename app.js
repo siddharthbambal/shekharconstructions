@@ -479,54 +479,103 @@
   }, { passive: true });
 
   // ══════════════════════════════════════════
-  // ONGOING PROJECTS AUTOSCROLL & WHATSAPP REDIRECT
+  // PORTFOLIO TABS (ONGOING VS UPCOMING)
   // ══════════════════════════════════════════
-  const projectsScroll = document.getElementById('projects-scroll');
-  if (projectsScroll) {
-    let scrollInterval;
-    
-    const startAutoScroll = () => {
-      if(scrollInterval) clearInterval(scrollInterval);
-      scrollInterval = setInterval(() => {
-        const maxScrollLeft = projectsScroll.scrollWidth - projectsScroll.clientWidth;
-        // If reached the end, reset to start
-        if (projectsScroll.scrollLeft >= maxScrollLeft - 10) {
-          projectsScroll.scrollTo({ left: 0, behavior: 'smooth' });
+  const projectTabs = document.getElementById('project-tabs');
+  if (projectTabs) {
+    const tabBtns = projectTabs.querySelectorAll('.project-tab-btn');
+    const tabOngoing = document.getElementById('tab-ongoing');
+    const tabUpcoming = document.getElementById('tab-upcoming');
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tab = btn.getAttribute('data-tab');
+
+        tabBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        if (tab === 'ongoing') {
+          if (tabOngoing) tabOngoing.style.display = 'grid';
+          if (tabUpcoming) tabUpcoming.style.display = 'none';
         } else {
-          // Scroll by approx one card width
-          projectsScroll.scrollBy({ left: 320, behavior: 'smooth' });
-        }
-      }, 2500);
-    };
-
-    const stopAutoScroll = () => {
-      if(scrollInterval) clearInterval(scrollInterval);
-    };
-
-    // Initialize auto-scroll
-    startAutoScroll();
-
-    // Pause on hover or touch
-    projectsScroll.addEventListener('mouseenter', stopAutoScroll);
-    projectsScroll.addEventListener('mouseleave', startAutoScroll);
-    projectsScroll.addEventListener('touchstart', stopAutoScroll, {passive: true});
-    projectsScroll.addEventListener('touchend', startAutoScroll, {passive: true});
-
-    // Make entire project card redirect to WhatsApp
-    const projectCards = projectsScroll.querySelectorAll('.project-card');
-    projectCards.forEach(card => {
-      card.style.cursor = 'pointer';
-      card.addEventListener('click', (e) => {
-        // Let anchor tag handle its own click
-        if (e.target.closest('a')) return;
-        
-        const nameEl = card.querySelector('.project-card-name');
-        if (nameEl) {
-          const projectName = nameEl.textContent.trim();
-          const text = encodeURIComponent(`Hello, I would like to enquire about ${projectName}`);
-          window.open(`https://wa.me/917745027821?text=${text}`, '_blank', 'noopener,noreferrer');
+          if (tabOngoing) tabOngoing.style.display = 'none';
+          if (tabUpcoming) tabUpcoming.style.display = 'grid';
         }
       });
+    });
+  }
+
+  // ══════════════════════════════════════════
+  // FLOOR PLAN LIGHTBOX MODAL HANDLER
+  // ══════════════════════════════════════════
+  const floorplanModal = document.getElementById('floorplan-modal');
+  const floorplanOverlay = document.getElementById('floorplan-overlay');
+  const floorplanClose = document.getElementById('floorplan-close');
+  const floorplanTitle = document.getElementById('floorplan-title');
+  const floorplanImg = document.getElementById('floorplan-image');
+  const floorplanWaBtn = document.getElementById('floorplan-wa-btn');
+  const toggleContainer = document.getElementById('floorplan-toggle-container');
+  const btnPlan2D = document.getElementById('btn-plan-2d');
+  const btnPlan3D = document.getElementById('btn-plan-3d');
+
+  let current2DImg = '';
+  let current3DImg = '';
+
+  const openFloorplanModal = (title, img2D, img3D) => {
+    if (!floorplanModal) return;
+    floorplanTitle.textContent = title || 'Floor Plan';
+    floorplanImg.src = img2D;
+
+    current2DImg = img2D;
+    current3DImg = img3D || '';
+
+    if (current3DImg) {
+      toggleContainer.style.display = 'flex';
+      btnPlan2D.classList.add('active');
+      btnPlan3D.classList.remove('active');
+    } else {
+      toggleContainer.style.display = 'none';
+    }
+
+    if (floorplanWaBtn) {
+      floorplanWaBtn.href = `https://wa.me/917745027821?text=${encodeURIComponent(`Hello, I am looking at the floor plan for ${title} and would like more details.`)}`;
+    }
+
+    floorplanModal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeFloorplanModal = () => {
+    if (!floorplanModal) return;
+    floorplanModal.classList.remove('show');
+    document.body.style.overflow = '';
+  };
+
+  document.querySelectorAll('.btn-floorplan').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const title = btn.getAttribute('data-plan-title');
+      const img2D = btn.getAttribute('data-plan-img');
+      const img3D = btn.getAttribute('data-alt-img');
+      openFloorplanModal(title, img2D, img3D);
+    });
+  });
+
+  if (floorplanClose) floorplanClose.addEventListener('click', closeFloorplanModal);
+  if (floorplanOverlay) floorplanOverlay.addEventListener('click', closeFloorplanModal);
+
+  if (btnPlan2D) {
+    btnPlan2D.addEventListener('click', () => {
+      btnPlan2D.classList.add('active');
+      btnPlan3D.classList.remove('active');
+      floorplanImg.src = current2DImg;
+    });
+  }
+
+  if (btnPlan3D) {
+    btnPlan3D.addEventListener('click', () => {
+      btnPlan3D.classList.add('active');
+      btnPlan2D.classList.remove('active');
+      if (current3DImg) floorplanImg.src = current3DImg;
     });
   }
 
