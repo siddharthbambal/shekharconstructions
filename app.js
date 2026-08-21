@@ -515,6 +515,16 @@
     });
   });
 
+  // Full Screen Project Render Image Viewer
+  document.querySelectorAll('.img-expand-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const title = btn.getAttribute('data-img-title');
+      const imgSrc = btn.getAttribute('data-img-src');
+      openFloorplanModal(title, imgSrc);
+    });
+  });
+
   if (floorplanClose) floorplanClose.addEventListener('click', closeFloorplanModal);
   if (floorplanOverlay) floorplanOverlay.addEventListener('click', closeFloorplanModal);
 
