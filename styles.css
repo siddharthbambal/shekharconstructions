@@ -3639,3 +3639,54 @@ button {
   .wwd-sub-title { font-size: 1.8rem; }
   .wwd-enquiry-drawer { margin: 0 5% var(--space-2xl); }
 }
+
+/* --- PROJECT CARDS DESKTOP SPLIT LAYOUT --- */
+@media (min-width: 769px) {
+  .full-viewport-sec#projects {
+    padding: 0 5%;
+  }
+  .full-viewport-grid > .project-card {
+    flex-direction: row;
+    align-items: stretch;
+    height: 85vh;
+    min-height: 600px;
+    padding: 0;
+    margin-bottom: var(--space-3xl);
+    background: var(--clr-bg-card);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+  }
+  .full-viewport-grid > .project-card:last-child {
+    margin-bottom: 0;
+  }
+  .full-viewport-grid > .project-card:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+  .full-viewport-grid > .project-card .project-card-img {
+    position: relative;
+    width: 55%;
+    height: 100%;
+  }
+  .full-viewport-grid > .project-card .project-card-img::after {
+    background: inset 0 0 40px rgba(0,0,0,0.5);
+  }
+  .full-viewport-grid > .project-card .project-card-body {
+    width: 45%;
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: transparent;
+  }
+  .full-viewport-grid .project-card-name {
+    font-size: 2.2rem;
+  }
+  .full-viewport-grid .project-card-desc {
+    font-size: 1.05rem;
+  }
+  .full-viewport-grid .project-card-actions {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
+
