@@ -2872,14 +2872,54 @@ button {
 }
 
 @media (max-width: 768px) {
-  .full-viewport-grid > .project-card,
-  .full-viewport-grid > .service-card {
+  .section.full-viewport-sec#services {
+    padding: 0 5%;
+  }
+
+  /* Projects keep full screen behavior */
+  .full-viewport-grid > .project-card {
     height: 85vh;
     min-height: 600px;
     padding: 10% 5%;
   }
+
+  /* Services convert to landscape cards on mobile */
+  .full-viewport-grid > .service-card {
+    height: auto;
+    min-height: 0;
+    padding: 0;
+    margin-bottom: var(--space-xl);
+    border-radius: var(--radius-lg);
+    background: var(--clr-bg-card);
+    border: 1px solid var(--glass-border);
+  }
+  
+  .full-viewport-grid > .service-card .service-card-media {
+    position: relative;
+    height: 56.25vw; /* 16:9 Landscape aspect ratio */
+    min-height: 200px;
+  }
+  
+  .full-viewport-grid > .service-card .service-card-media::after {
+    display: none; /* Remove gradient overlay on mobile for services */
+  }
+  
+  .full-viewport-grid > .service-card .service-card-body {
+    position: relative;
+    padding: var(--space-lg);
+    background: transparent;
+  }
+  
+  .service-card-body h3 { 
+    font-size: 1.8rem; 
+    color: var(--clr-accent);
+  }
+  .service-card-body p {
+    font-size: 1rem;
+    color: var(--clr-text-muted);
+  }
+
   .full-viewport-grid .project-card-name { font-size: 2.2rem; }
-  .service-card-body h3 { font-size: 2.2rem; }
   .full-viewport-grid .project-card-actions { flex-direction: column; align-items: flex-start; gap: 1rem; }
 }
 
