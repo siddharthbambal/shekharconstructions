@@ -36,24 +36,24 @@
   ];
 
   const albumHeroTitles = [
-    'Building trust.<br /><em>Earning recognition.</em>',
-    'Celebrating <em>achievement</em>',
-    'A shared <em>vision</em><br />for Nagpur',
-    'Proudly part of<br /><em>CREDAI Nagpur</em>',
-    'Recognised by our<br /><em>community</em>',
-    'Leading with<br /><em>purpose</em>',
-    'A journey built on<br /><em>trust</em>',
-    'Inspired to build<br /><em>what matters</em>'
+    'A Moment of<br /><em>Distinction</em>',
+    'Recognition Beyond<br /><em>the Built</em>',
+    'Recognised Among<br /><em>the Best</em>',
+    'A New Chapter of<br /><em>Leadership</em>',
+    'Recognition from<br /><em>the Industry</em>',
+    'Celebrating Women in<br /><em>Leadership</em>',
+    'Recognising<br /><em>Excellence</em>',
+    'Leading the<br /><em>Conversation</em>'
   ];
   const albumHeroSubtitles = [
-    'A glimpse of our journey with Nagpur’s real estate community.',
-    'Honouring the people and partnerships behind our work.',
-    'Committed to thoughtful spaces and a stronger built environment.',
-    'Connected to the industry and the city we call home.',
-    'Every milestone encourages us to keep building better.',
-    'Ar. Kanchan Bambal with leaders from Maharashtra’s real estate community.',
-    'A proud moment from the CREDAI Nagpur Metro installation ceremony.',
-    'Ar. Kanchan Bambal, nominee for Best Woman Entrepreneur in Real Estate 2024.'
+    'In the presence of leadership. A distinguished moment with Hon. Shri Devendra Fadnavis, Chief Minister of Maharashtra.',
+    'Trust that extends further. A moment of recognition with Hon. Shri Chandrashekhar Bawankule, Cabinet Minister for Revenue.',
+    'Excellence in residential development. Honoured at the MAREDCO Maharashtra awards for Best Residential Project — 2022.',
+    'Women shaping the industry. A proud moment at the CREDAI Maharashtra Women’s Wing Installation.',
+    'Honoured by industry leadership. Receiving a Certificate of Appreciation from NAREDCO Vidarbha.',
+    'By women, for women. A moment of recognition at FemmiCon, celebrating women in real estate.',
+    'Celebrating achievement. A proud moment of receiving recognition at the IIA Maharashtra platform.',
+    'Building a stronger industry together. A distinguished moment at the CREDAI Women’s Wing Zonal Meet.'
   ];
 
   let currentSlide = 0;

@@ -3432,3 +3432,7 @@ button {
   .wwd-sub-title { font-size: 1.8rem; }
   .wwd-cta-container { margin: 0 5% var(--space-2xl); }
 }
+
+/* Inline Enquiry */
+details.inline-enquiry summary::-webkit-details-marker { display: none; }
+
