@@ -35,25 +35,35 @@
     'From concept to key handover, we transform your vision into architectural marvels that stand the test of time.'
   ];
 
+  const albumHeroLabels = [
+    "In the presence of leadership",
+    "Trust that extends further",
+    "Excellence in residential development",
+    "Women shaping the industry",
+    "Honoured by industry leadership",
+    "By women, for women",
+    "Celebrating achievement with the industry",
+    "Building a stronger industry together"
+  ];
   const albumHeroTitles = [
-    'Building trust.<br /><em>Earning recognition.</em>',
-    'Celebrating <em>achievement</em>',
-    'A shared <em>vision</em><br />for Nagpur',
-    'Proudly part of<br /><em>CREDAI Nagpur</em>',
-    'Recognised by our<br /><em>community</em>',
-    'Leading with<br /><em>purpose</em>',
-    'A journey built on<br /><em>trust</em>',
-    'Inspired to build<br /><em>what matters</em>'
+    "A Moment of Distinction",
+    "Recognition Beyond the Built",
+    "Recognised Among the Best",
+    "A New Chapter of Leadership",
+    "Recognition from the Industry",
+    "Celebrating Women in Leadership",
+    "Recognising Excellence",
+    "Leading the Conversation"
   ];
   const albumHeroSubtitles = [
-    'A glimpse of our journey with Nagpur’s real estate community.',
-    'Honouring the people and partnerships behind our work.',
-    'Committed to thoughtful spaces and a stronger built environment.',
-    'Connected to the industry and the city we call home.',
-    'Every milestone encourages us to keep building better.',
-    'Ar. Kanchan Bambal with leaders from Maharashtra’s real estate community.',
-    'A proud moment from the CREDAI Nagpur Metro installation ceremony.',
-    'Ar. Kanchan Bambal, nominee for Best Woman Entrepreneur in Real Estate 2024.'
+    "A distinguished moment with Hon. Shri Devendra Fadnavis, Chief Minister of Maharashtra.",
+    "A moment of recognition with Hon. Shri Chandrashekhar Bawankule, Cabinet Minister for Revenue, Maharashtra.",
+    "Honoured at the MAREDCO Maharashtra awards for Best Residential Project — 2022.",
+    "A proud moment at the CREDAI Maharashtra Women’s Wing Installation, marking leadership, representation and a stronger voice for women in real estate.",
+    "A proud moment for Bambal Infrastructure, receiving a Certificate of Appreciation from NAREDCO Vidarbha, presented by Dr. Niranjan Hiranandani, Chairman, NAREDCO.",
+    "A moment of recognition at FemmiCon, celebrating women making a meaningful mark in the real-estate industry.",
+    "A proud moment of receiving recognition at the IIA Maharashtra platform, celebrating contribution and excellence in the built environment.",
+    "A distinguished moment at the CREDAI Women’s Wing Zonal Meet, celebrating leadership, collaboration and women’s growing influence in real estate."
   ];
 
   let currentSlide = 0;
@@ -78,24 +88,27 @@
     indicators[currentSlide].classList.add('active');
 
     // Update hero text with smooth transition
+    const labelEl = document.getElementById('hero-label');
     const titleEl = document.getElementById('hero-title');
     const subtitleEl = document.getElementById('hero-subtitle');
 
-    titleEl.style.opacity = '0';
-    titleEl.style.transform = 'translateY(20px)';
-    subtitleEl.style.opacity = '0';
-    subtitleEl.style.transform = 'translateY(20px)';
+    [labelEl, titleEl, subtitleEl].forEach(el => {
+      if (!el) return;
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+    });
 
     setTimeout(() => {
-      titleEl.innerHTML = albumHeroTitles[currentSlide];
-      subtitleEl.textContent = albumHeroSubtitles[currentSlide];
-      titleEl.style.opacity = '1';
-      titleEl.style.transform = 'translateY(0)';
-      subtitleEl.style.opacity = '1';
-      subtitleEl.style.transform = 'translateY(0)';
+      if (labelEl) labelEl.textContent = albumHeroLabels[currentSlide];
+      if (titleEl) titleEl.textContent = albumHeroTitles[currentSlide];
+      if (subtitleEl) subtitleEl.textContent = albumHeroSubtitles[currentSlide];
+      [labelEl, titleEl, subtitleEl].forEach(el => {
+        if (!el) return;
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      });
     }, 300);
   }
-
   function nextSlide() {
     goToSlide((currentSlide + 1) % slides.length);
   }
@@ -107,15 +120,18 @@
   }
 
   // Add transition styles to hero text
+  const heroLabel = document.getElementById('hero-label');
   const heroTitle = document.getElementById('hero-title');
   const heroSubtitle = document.getElementById('hero-subtitle');
+  if (heroLabel) {
+    heroLabel.style.transition = 'opacity 0.4s cubic-bezier(0.16,1,0.3,1), transform 0.4s cubic-bezier(0.16,1,0.3,1)';
+  }
   if (heroTitle) {
-    heroTitle.style.transition = 'opacity 0.4s cubic-bezier(0.16,1,0.3,1), transform 0.4s cubic-bezier(0.16,1,0.3,1)';
+    heroTitle.style.transition = 'opacity 0.4s cubic-bezier(0.16,1,0.3,1) 0.05s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.05s';
   }
   if (heroSubtitle) {
     heroSubtitle.style.transition = 'opacity 0.4s cubic-bezier(0.16,1,0.3,1) 0.1s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.1s';
   }
-
   // Indicator clicks
   indicators.forEach((indicator, idx) => {
     indicator.addEventListener('click', () => {
@@ -283,176 +299,197 @@
   animateCounters();
 
   // ══════════════════════════════════════════
-  // ENQUIRY FORM
+  // ENQUIRY FORMS
   // ══════════════════════════════════════════
-  const btnConstruction = document.getElementById('btn-construction');
-  const btnArchitecture = document.getElementById('btn-architecture');
-  const dynamicField = document.getElementById('dynamic-field');
-  const budgetField = document.getElementById('budget-field');
-  const enquiryForm = document.getElementById('enquiry-form');
-  const formSuccess = document.getElementById('form-success');
-  const btnSubmit = document.getElementById('btn-submit');
+  const projectOptions = [
+    { value: 'shiv-sparsh-villa', label: 'Shiv Sparsh Villa (New Manish Nagar - 3 BHK)' },
+    { value: 'shiv-subah-villas', label: 'Shiv Subah Villas (One Floor One Flat - 3 BHK)' },
+    { value: 'shivtara-towers', label: 'Shivtara Towers (Shambhu Nagar - Launching Oct 2026)' },
+    { value: 'shiv-kunj', label: 'Shiv Kunj (Arya Nagar - Launching Soon)' },
+    { value: 'sapphire-tower', label: 'Sapphire Tower (Dabha - Launching Soon)' },
+    { value: 'other-project', label: 'Other / General Project Enquiry' }
+  ];
 
-  // Bambal Constructions enquiry options
-  function setBambalEnquiryType(type) {
-    const isHomeEnquiry = type === 'construction';
-    btnConstruction.classList.toggle('active', isHomeEnquiry);
-    btnArchitecture.classList.toggle('active', !isHomeEnquiry);
-    budgetField.style.display = isHomeEnquiry ? 'block' : 'none';
-    btnSubmit.textContent = isHomeEnquiry ? 'Submit Enquiry' : 'Request Consultation';
-    dynamicField.innerHTML = isHomeEnquiry ? `
-      <label class="form-label" for="enquiry-project">Interested Project</label>
-      <select class="form-select" id="enquiry-project">
-        <option value="">Select a project</option>
-        <option value="ish-sparsh">Ish Sparsh — 2–4 BHK</option>
-        <option value="shreeansh-residency">Shreeansh Residency — 2–4 BHK</option>
-        <option value="shiv-park">Shiv Park — 2–4 BHK</option>
-        <option value="shivantara-living">Shivantara Living — 2–4 BHK</option>
-        <option value="other">Other / General Enquiry</option>
-      </select>` : `
-      <label class="form-label" for="enquiry-service">Service Required</label>
-      <select class="form-select" id="enquiry-service">
-        <option value="">Select service</option>
-        <option value="architecture">Architectural Design & Planning</option>
-        <option value="interiors">Interior Design</option>
-        <option value="renovation">Renovation</option>
-        <option value="consultation">General Consultation</option>
-      </select>`;
+  const serviceOptions = [
+    { value: 'architecture', label: 'Architecture & Planning' },
+    { value: 'construction', label: 'Construction & Execution' },
+    { value: 'turnkey', label: 'Turnkey Projects' },
+    { value: 'development', label: 'Real Estate Development' },
+    { value: 'interiors', label: 'Interior Design & Finishing' },
+    { value: 'resorts', label: 'Resorts' },
+    { value: 'redevelopment', label: 'Redevelopment' },
+    { value: 'renovation', label: 'Renovation & Remodelling' },
+    { value: 'consultation', label: 'General Consultation' }
+  ];
+
+  const budgetOptions = [
+    { value: 'up-to-35L', label: 'Up to ₹35 Lakh' },
+    { value: '35-50L', label: '₹35 Lakh - ₹50 Lakh' },
+    { value: '50L+', label: '₹50 Lakh+' }
+  ];
+
+  function normalizeEnquiryType(type) {
+    return type === 'architecture' || type === 'services' ? 'services' : 'projects';
   }
 
-  // Type toggle
-  function setEnquiryType(type) {
-    if (type === 'construction') {
-      btnConstruction.classList.add('active');
-      btnArchitecture.classList.remove('active');
-      dynamicField.innerHTML = `
-        <label class="form-label" for="enquiry-project">Interested Project</label>
-        <select class="form-select" id="enquiry-project">
+  function optionListMarkup(options) {
+    return options.map(option => `<option value="${option.value}">${option.label}</option>`).join('');
+  }
+
+  function setBambalEnquiryType(wrapper, type) {
+    const activeType = normalizeEnquiryType(type);
+    const isProjectEnquiry = activeType === 'projects';
+    const scope = wrapper.dataset.scope || 'enquiry';
+    const dynamicField = wrapper.querySelector('[data-dynamic-field]') || wrapper.querySelector('#dynamic-field');
+    const budgetField = wrapper.querySelector('[data-budget-field]') || wrapper.querySelector('#budget-field');
+    const submitButton = wrapper.querySelector('[data-submit]') || wrapper.querySelector('#btn-submit');
+
+    wrapper.querySelectorAll('.enquiry-type-btn').forEach(button => {
+      const buttonType = normalizeEnquiryType(button.dataset.type);
+      button.classList.toggle('active', buttonType === activeType);
+    });
+
+    if (dynamicField) {
+      dynamicField.innerHTML = isProjectEnquiry ? `
+        <label class="form-label" for="${scope}-project">Interested Project</label>
+        <select class="form-select" id="${scope}-project" data-project-select>
           <option value="">Select a project</option>
-          <option value="ish-sparsh">Ish Sparsh — 2–4 BHK</option>
-          <option value="shreeansh-residency">Shreeansh Residency — 2–4 BHK</option>
-          <option value="shiv-park">Shiv Park — 2–4 BHK</option>
-          <option value="shivantara-living">Shivantara Living — 2–4 BHK</option>
-          <option value="other">Other / General Enquiry</option>
-        </select>
-      `;
-      budgetField.style.display = 'block';
-      btnSubmit.textContent = 'Submit Enquiry';
-    } else {
-      btnArchitecture.classList.add('active');
-      btnConstruction.classList.remove('active');
-      dynamicField.innerHTML = `
-        <label class="form-label" for="enquiry-service">Service Required</label>
-        <select class="form-select" id="enquiry-service">
+          ${optionListMarkup(projectOptions)}
+        </select>` : `
+        <label class="form-label" for="${scope}-service">Service Required</label>
+        <select class="form-select" id="${scope}-service" data-project-select>
           <option value="">Select service</option>
-          <option value="design">Architectural Design & Planning</option>
-          <option value="interior">Interior Design</option>
-          <option value="renovation">Renovation & Remodelling</option>
-          <option value="3d">3D Visualization & Walkthrough</option>
-          <option value="consultation">General Consultation</option>
-        </select>
-      `;
-      budgetField.style.display = 'none';
-      btnSubmit.textContent = 'Request Consultation';
+          ${optionListMarkup(serviceOptions)}
+        </select>`;
+    }
+
+    if (budgetField) {
+      budgetField.style.display = isProjectEnquiry ? 'block' : 'none';
+      const budgetSelect = budgetField.querySelector('select');
+      if (budgetSelect && budgetSelect.options.length <= 1) {
+        budgetSelect.insertAdjacentHTML('beforeend', optionListMarkup(budgetOptions));
+      }
+    }
+
+    if (submitButton) {
+      submitButton.textContent = isProjectEnquiry ? 'Submit Enquiry' : 'Request Consultation';
     }
   }
 
-  if (btnConstruction) {
-    btnConstruction.addEventListener('click', () => setBambalEnquiryType('construction'));
-  }
-  if (btnArchitecture) {
-    btnArchitecture.addEventListener('click', () => setBambalEnquiryType('architecture'));
+  function getFieldValue(form, selector, fallback = 'N/A') {
+    const field = form.querySelector(selector);
+    const value = field ? field.value.trim() : '';
+    return value || fallback;
   }
 
-  // Form submission — Web3Forms Email Dispatch & WhatsApp Lead Redirect
-  if (enquiryForm) {
-    enquiryForm.addEventListener('submit', async (e) => {
+  function getSelectedText(select, emptyLabels) {
+    if (!select || !select.value || !select.options[select.selectedIndex]) return 'N/A';
+    const label = select.options[select.selectedIndex].text.trim();
+    return emptyLabels.includes(label) ? 'N/A' : label;
+  }
+
+  function initEnquiryForm(wrapper) {
+    const form = wrapper.querySelector('form');
+    if (!form) return;
+
+    const submitButton = wrapper.querySelector('[data-submit]') || wrapper.querySelector('#btn-submit') || form.querySelector('button[type="submit"]');
+    const successState = wrapper.querySelector('[data-form-success]') || wrapper.querySelector('#form-success');
+    const toggleEl = wrapper.querySelector('.enquiry-type-toggle');
+    const activeButton = wrapper.querySelector('.enquiry-type-btn.active');
+    const defaultType = wrapper.dataset.defaultType || (activeButton ? activeButton.dataset.type : 'projects');
+
+    setBambalEnquiryType(wrapper, defaultType);
+
+    wrapper.querySelectorAll('.enquiry-type-btn').forEach(button => {
+      button.addEventListener('click', () => setBambalEnquiryType(wrapper, button.dataset.type));
+    });
+
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      // Collect form data
-      const name = document.getElementById('enquiry-name')?.value.trim() || 'N/A';
-      const phone = document.getElementById('enquiry-phone')?.value.trim() || 'N/A';
-      const email = document.getElementById('enquiry-email')?.value.trim() || 'N/A';
-      
-      const typeToggle = document.querySelector('.enquiry-type-btn.active');
-      const enquiryType = typeToggle ? typeToggle.textContent.trim() : 'General';
-      
-      const projectSelect = document.getElementById('enquiry-project');
-      const selectedProject = projectSelect && projectSelect.options[projectSelect.selectedIndex] ? projectSelect.options[projectSelect.selectedIndex].text : 'N/A';
-      
-      const budgetSelect = document.getElementById('enquiry-budget');
-      const selectedBudget = budgetSelect && budgetSelect.options[budgetSelect.selectedIndex] && budgetSelect.value ? budgetSelect.options[budgetSelect.selectedIndex].text : 'N/A';
-      
-      const userMessage = document.getElementById('enquiry-message')?.value.trim() || 'None';
+      const name = getFieldValue(form, '[data-field="name"], #enquiry-name');
+      const phone = getFieldValue(form, '[data-field="phone"], #enquiry-phone');
+      const email = getFieldValue(form, '[data-field="email"], #enquiry-email');
+      const message = getFieldValue(form, '[data-field="message"], #enquiry-message', 'None');
+      const activeTypeButton = wrapper.querySelector('.enquiry-type-btn.active');
+      const enquiryMode = normalizeEnquiryType(activeTypeButton ? activeTypeButton.dataset.type : defaultType);
+      const enquiryType = enquiryMode === 'projects' ? 'Projects' : 'Services';
+      const projectOrService = getSelectedText(
+        wrapper.querySelector('[data-project-select], #enquiry-project, #enquiry-service'),
+        ['Select a project', 'Select service']
+      );
+      const selectedBudget = getSelectedText(
+        wrapper.querySelector('[data-budget-select], #enquiry-budget'),
+        ['Select budget range']
+      );
 
-      // Button loading state
-      const originalBtnText = btnSubmit.textContent;
-      btnSubmit.textContent = 'Sending Enquiry...';
-      btnSubmit.disabled = true;
-      btnSubmit.style.opacity = '0.7';
+      const originalBtnText = submitButton ? submitButton.textContent : '';
+      if (submitButton) {
+        submitButton.textContent = 'Sending Enquiry...';
+        submitButton.disabled = true;
+        submitButton.style.opacity = '0.7';
+      }
 
-      // Construct formatted WhatsApp message for instant notification
       let waMessage = `*NEW WEBSITE ENQUIRY*\n----------------------\n`;
       waMessage += `*Name:* ${name}\n`;
       waMessage += `*Phone:* ${phone}\n`;
       waMessage += `*Email:* ${email}\n`;
       waMessage += `*Type:* ${enquiryType}\n`;
-      if (selectedProject !== 'N/A' && selectedProject !== 'Select a project') {
-        waMessage += `*Requirement:* ${selectedProject}\n`;
+      if (projectOrService !== 'N/A') {
+        waMessage += `*Requirement:* ${projectOrService}\n`;
       }
-      if (selectedBudget !== 'N/A' && selectedBudget !== 'Select budget range') {
+      if (selectedBudget !== 'N/A' && enquiryMode === 'projects') {
         waMessage += `*Budget:* ${selectedBudget}\n`;
       }
-      if (userMessage !== 'None') {
-        waMessage += `*Message:* ${userMessage}\n`;
+      if (message !== 'None') {
+        waMessage += `*Message:* ${message}\n`;
       }
 
-      // 1. Submit to Web3Forms API to deliver emails to siddharthbambal10@gmail.com, shekharconstructions@gmail.com, bambalinfrastructure@gmail.com
       try {
         const formData = new FormData();
-        formData.append("access_key", "58f4a9b5-4122-4467-9377-50fb7bdfed97"); // Web3Forms Public Key configured for your emails
-        formData.append("subject", `New Web Lead: ${name} (${enquiryType})`);
-        formData.append("from_name", "Bambal Infrastructure Website");
-        formData.append("to_email", "siddharthbambal10@gmail.com, shekharconstructions@gmail.com, bambalinfrastructure@gmail.com");
-        formData.append("Name", name);
-        formData.append("Phone", phone);
-        formData.append("Email", email);
-        formData.append("Enquiry Type", enquiryType);
-        formData.append("Project / Service", selectedProject);
-        formData.append("Budget Range", selectedBudget);
-        formData.append("Message", userMessage);
+        formData.append('access_key', '58f4a9b5-4122-4467-9377-50fb7bdfed97');
+        formData.append('subject', `New Web Lead: ${name} (${enquiryType})`);
+        formData.append('from_name', 'Bambal Infrastructure Website');
+        formData.append('to_email', 'siddharthbambal10@gmail.com, shekharconstructions@gmail.com, bambalinfrastructure@gmail.com');
+        formData.append('Name', name);
+        formData.append('Phone', phone);
+        formData.append('Email', email);
+        formData.append('Enquiry Type', enquiryType);
+        formData.append('Project / Service', projectOrService);
+        formData.append('Budget Range', selectedBudget);
+        formData.append('Message', message);
 
-        fetch("https://api.web3forms.com/submit", {
-          method: "POST",
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
           body: formData
-        }).catch(err => console.log("Background email submission error:", err));
+        }).catch(err => console.log('Background email submission error:', err));
       } catch (err) {
-        console.log("Web3Forms error:", err);
+        console.log('Web3Forms error:', err);
       }
 
-      // 2. Display success UI state
-      enquiryForm.style.display = 'none';
-      const toggleEl = document.querySelector('.enquiry-type-toggle');
+      form.style.display = 'none';
       if (toggleEl) toggleEl.style.display = 'none';
-      if (formSuccess) formSuccess.classList.add('show');
+      if (successState) successState.classList.add('show');
 
-      // 3. Automatically open WhatsApp to immediately alert you (+91 77450 27821)
       const encodedWaText = encodeURIComponent(waMessage);
       window.open(`https://wa.me/917745027821?text=${encodedWaText}`, '_blank', 'noopener,noreferrer');
 
-      // Reset form after delay
       setTimeout(() => {
-        enquiryForm.reset();
-        enquiryForm.style.display = 'block';
+        form.reset();
+        form.style.display = 'block';
         if (toggleEl) toggleEl.style.display = 'flex';
-        if (formSuccess) formSuccess.classList.remove('show');
-        btnSubmit.textContent = originalBtnText;
-        btnSubmit.disabled = false;
-        btnSubmit.style.opacity = '1';
-        setBambalEnquiryType('construction');
+        if (successState) successState.classList.remove('show');
+        if (submitButton) {
+          submitButton.textContent = originalBtnText;
+          submitButton.disabled = false;
+          submitButton.style.opacity = '1';
+        }
+        setBambalEnquiryType(wrapper, defaultType);
       }, 5000);
     });
   }
+
+  document.querySelectorAll('.enquiry-form-wrapper').forEach(initEnquiryForm);
 
   // ══════════════════════════════════════════
   // PARALLAX SCROLL EFFECT
