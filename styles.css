@@ -3690,3 +3690,11 @@ button {
   }
 }
 
+
+@media (min-width: 769px) {
+  .full-viewport-grid > .project-card .project-card-img img {
+    object-fit: contain !important;
+    background: rgba(14, 14, 14, 0.94); /* to match the dark theme */
+  }
+}
+
