@@ -2820,228 +2820,175 @@ button {
 .full-viewport-grid {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3xl);
+  gap: 0;
   margin-top: 0;
   width: 100%;
 }
 
-.full-viewport-grid > .project-card {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin: 0;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--glass-border);
-  background: var(--clr-bg-card);
-  overflow: hidden;
-}
-
-/* Base (Mobile) Stacked Layout */
-.full-viewport-grid > .project-card .project-card-img {
+.full-viewport-grid > .project-card,
+.full-viewport-grid > .service-card {
   position: relative;
   width: 100%;
-  aspect-ratio: 2/3; /* Portrait ratio for mobile */
-  background: #080808;
+  height: 100vh;
+  min-height: 700px;
+  max-width: none;
+  margin: 0;
+  border-radius: 0;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 5%;
+  overflow: hidden;
+  box-shadow: none !important;
+  transform: none !important;
 }
 
-.full-viewport-grid > .project-card .project-card-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center bottom; /* Keep architectural details from bottom up */
-  display: block;
-}
-
-/* Dark gradient overlay ONLY at the very top for the badge readability */
-.full-viewport-grid > .project-card .project-card-img::after {
-  content: "";
+.full-viewport-grid > .project-card .project-card-img,
+.full-viewport-grid > .service-card .service-card-media {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  height: 120px;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, transparent 100%);
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  z-index: 0;
+  border-radius: 0;
+}
+
+.full-viewport-grid > .project-card .project-card-img img,
+.full-viewport-grid > .service-card .service-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: none !important;
+}
+
+.full-viewport-grid > .project-card .project-card-img::after,
+.full-viewport-grid > .service-card .service-card-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.1) 100%);
+  z-index: 1;
   pointer-events: none;
 }
 
-.full-viewport-grid > .project-card .project-card-body {
-  padding: var(--space-xl) var(--space-lg);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.full-viewport-grid > .project-card .project-card-body,
+.full-viewport-grid > .service-card .service-card-body {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+  background: transparent;
+  color: var(--clr-white);
+}
+
+.service-card-body h3 {
+  font-family: var(--ff-display);
+  font-size: 2.8rem;
+  font-weight: 600;
+  color: var(--clr-white);
+  margin-bottom: var(--space-md);
+  margin-left: 0;
+}
+
+.service-card-body p {
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.7;
+  max-width: 600px;
+  margin-left: 0;
 }
 
 .full-viewport-grid .project-card-name {
-  font-size: 2.2rem;
+  font-size: 3rem;
   margin-bottom: var(--space-sm);
-  color: var(--clr-white);
-  font-family: var(--ff-display);
-  font-weight: 600;
 }
-
 .full-viewport-grid .project-card-desc {
-  font-size: 1.05rem;
-  color: var(--clr-text-muted);
-  line-height: 1.6;
-  margin-bottom: var(--space-lg);
+  font-size: 1.15rem;
+  max-width: 700px;
+  color: rgba(255,255,255,0.9);
 }
-
 .full-viewport-grid .project-spec-value {
   color: #fff;
   font-size: 1.1rem;
 }
-
 .full-viewport-grid .project-card-actions {
-  border-top: 1px solid rgba(255,255,255,0.1);
-  margin-top: 1.5rem;
+  border-top-color: rgba(255,255,255,0.2);
+  margin-top: 2rem;
   padding-top: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1rem;
+  justify-content: flex-start;
+  gap: 2rem;
 }
-
 .full-viewport-grid .project-card-location {
   font-size: 1rem;
-  color: var(--clr-text-muted);
-  margin-bottom: var(--space-md);
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  color: #ccc;
+  margin-bottom: var(--space-lg);
 }
 
-.full-viewport-grid .project-card-location svg {
-  width: 16px;
-  height: 16px;
-}
+@media (max-width: 768px) {
+  .section.full-viewport-sec#services {
+    padding: 0 5%;
+  }
 
-/* Badge Positioning */
-.full-viewport-grid .project-badge {
-  position: absolute;
-  top: 24px;
-  left: 24px;
-  z-index: 2;
-}
-
-/* Desktop Split Layout */
-@media (min-width: 769px) {
+  /* Projects keep full screen behavior */
   .full-viewport-grid > .project-card {
-    flex-direction: row;
-    align-items: stretch;
+    height: 85vh;
+    min-height: 600px;
+    padding: 10% 5%;
+  }
+
+  /* Services convert to landscape cards on mobile */
+  .full-viewport-grid > .service-card {
     height: auto;
-    min-height: 75vh; /* Substantial height */
+    min-height: 0;
+    padding: 0;
+    margin-bottom: var(--space-xl);
+    border-radius: var(--radius-lg);
+    background: var(--clr-bg-card);
+    border: 1px solid var(--glass-border);
   }
   
-  .full-viewport-grid > .project-card:nth-child(even) {
-    flex-direction: row-reverse;
+  .full-viewport-grid > .service-card .service-card-media {
+    position: relative;
+    height: 56.25vw; /* 16:9 Landscape aspect ratio */
+    min-height: 200px;
   }
   
-  .full-viewport-grid > .project-card .project-card-img {
-    width: 50%; /* 50% image */
-    height: auto;
-    aspect-ratio: unset; /* Override mobile aspect ratio to just fill container */
+  .full-viewport-grid > .service-card .service-card-media::after {
+    display: none; /* Remove gradient overlay on mobile for services */
   }
   
-  .full-viewport-grid > .project-card .project-card-body {
-    width: 50%; /* 50% content */
-    padding: 4rem;
+  .full-viewport-grid > .service-card .service-card-body {
+    position: relative;
+    padding: var(--space-lg);
+    background: transparent;
   }
   
-  .full-viewport-grid .project-card-name {
-    font-size: 3rem;
+  .service-card-body h3 { 
+    font-size: 1.8rem; 
+    color: var(--clr-accent);
   }
-  
-  .full-viewport-grid .project-card-desc {
-    font-size: 1.15rem;
+  .service-card-body p {
+    font-size: 1rem;
+    color: var(--clr-text-muted);
   }
-  
-  .full-viewport-grid .project-card-actions {
-    flex-direction: row;
-    gap: 2rem;
-  }
+
+  .full-viewport-grid .project-card-name { font-size: 2.2rem; }
+  .full-viewport-grid .project-card-actions { flex-direction: column; align-items: flex-start; gap: 1rem; }
 }
 
 .full-viewport-grid .img-expand-btn {
   display: none;
 }
 
-/* ═══════════════ SERVICES CARDS (Preserve existing services mobile style) ═══════════════ */
-.full-viewport-grid > .service-card {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin: 0;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--glass-border);
-  background: var(--clr-bg-card);
-  overflow: hidden;
-  margin-bottom: var(--space-xl);
-}
-.full-viewport-grid > .service-card .service-card-media {
-  position: relative;
-  width: 100%;
-  height: 56.25vw;
-  min-height: 200px;
-}
-.full-viewport-grid > .service-card .service-card-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-.full-viewport-grid > .service-card .service-card-body {
-  padding: var(--space-lg);
-}
-.service-card-body h3 { 
-  font-size: 1.8rem; 
-  color: var(--clr-accent);
-  margin-bottom: var(--space-md);
-}
-.service-card-body p {
-  font-size: 1rem;
-  color: var(--clr-text-muted);
-  line-height: 1.7;
-}
-
-/* Desktop services overlay */
-@media (min-width: 769px) {
-  .full-viewport-grid > .service-card {
-    height: 100vh;
-    min-height: 700px;
-    justify-content: flex-end;
-    padding: 5%;
-    border-radius: 0;
-    border: none;
-  }
-  .full-viewport-grid > .service-card .service-card-media {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-  }
-  .full-viewport-grid > .service-card .service-card-media::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.1) 100%);
-  }
-  .full-viewport-grid > .service-card .service-card-body {
-    position: relative;
-    z-index: 2;
-    padding: 0;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  .service-card-body h3 {
-    font-size: 2.8rem;
-    color: var(--clr-white);
-  }
-  .service-card-body p {
-    font-size: 1.15rem;
-    color: rgba(255, 255, 255, 0.9);
-  }
-}
-
+/* ══════════════════════════════════════════
+   WHAT WE DO — VISUAL NARRATIVE DESIGN
+   ══════════════════════════════════════════ */
 .what-we-do {
   background: var(--clr-bg-deep);
   color: var(--clr-white);
@@ -3691,5 +3638,63 @@ button {
   
   .wwd-sub-title { font-size: 1.8rem; }
   .wwd-enquiry-drawer { margin: 0 5% var(--space-2xl); }
+}
+
+/* --- PROJECT CARDS DESKTOP SPLIT LAYOUT --- */
+@media (min-width: 769px) {
+  .full-viewport-sec#projects {
+    padding: 0 5%;
+  }
+  .full-viewport-grid > .project-card {
+    flex-direction: row;
+    align-items: stretch;
+    height: 85vh;
+    min-height: 600px;
+    padding: 0;
+    margin-bottom: var(--space-3xl);
+    background: var(--clr-bg-card);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+  }
+  .full-viewport-grid > .project-card:last-child {
+    margin-bottom: 0;
+  }
+  .full-viewport-grid > .project-card:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+  .full-viewport-grid > .project-card .project-card-img {
+    position: relative;
+    width: 55%;
+    height: 100%;
+  }
+  .full-viewport-grid > .project-card .project-card-img::after {
+    background: inset 0 0 40px rgba(0,0,0,0.5);
+  }
+  .full-viewport-grid > .project-card .project-card-body {
+    width: 45%;
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: transparent;
+  }
+  .full-viewport-grid .project-card-name {
+    font-size: 2.2rem;
+  }
+  .full-viewport-grid .project-card-desc {
+    font-size: 1.05rem;
+  }
+  .full-viewport-grid .project-card-actions {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
+
+
+@media (min-width: 769px) {
+  .full-viewport-grid > .project-card .project-card-img img {
+    object-fit: contain !important;
+    background: rgba(14, 14, 14, 0.94); /* to match the dark theme */
+  }
 }
 
