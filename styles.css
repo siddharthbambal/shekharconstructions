@@ -3639,3 +3639,8 @@ button {
   .wwd-sub-title { font-size: 1.8rem; }
   .wwd-enquiry-drawer { margin: 0 5% var(--space-2xl); }
 }
+
+.wwd-service-list { list-style: none; padding: 0; margin: var(--space-md) 0 0 0; display: flex; flex-direction: column; gap: 12px; }
+.wwd-service-list li { position: relative; padding-left: 24px; color: var(--clr-text-muted); font-size: 0.95rem; line-height: 1.5; }
+.wwd-service-list li::before { content: "•"; position: absolute; left: 0; top: 0; color: var(--clr-accent); font-size: 1.5rem; line-height: 1; }
+
