@@ -3648,8 +3648,7 @@ button {
   .full-viewport-grid > .project-card {
     flex-direction: row;
     align-items: stretch;
-    height: 85vh;
-    min-height: 600px;
+    height: auto;
     padding: 0;
     margin-bottom: var(--space-3xl);
     background: var(--clr-bg-card);
@@ -3693,8 +3692,8 @@ button {
 
 @media (min-width: 769px) {
   .full-viewport-grid > .project-card .project-card-img img {
-    object-fit: contain !important;
-    background: rgba(14, 14, 14, 0.94); /* to match the dark theme */
+    object-fit: cover !important;
+    object-position: center; /* Ensure the building is centered */
   }
 }
 
