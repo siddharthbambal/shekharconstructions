@@ -3644,3 +3644,6 @@ button {
 .wwd-service-list li { position: relative; padding-left: 24px; color: var(--clr-text-muted); font-size: 0.95rem; line-height: 1.5; }
 .wwd-service-list li::before { content: "•"; position: absolute; left: 0; top: 0; color: var(--clr-accent); font-size: 1.5rem; line-height: 1; }
 
+
+.wwd-entry-icon { width: 32px; height: 32px; margin-bottom: 1rem; color: var(--clr-accent); }
+
