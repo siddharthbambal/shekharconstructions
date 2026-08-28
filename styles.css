@@ -3660,3 +3660,6 @@ button {
 
 .wwd-entry-icon { width: 32px; height: 32px; margin-bottom: 1rem; color: var(--clr-accent); }
 
+
+.social-card:hover { transform: translateY(-5px); } .social-card:hover .social-overlay { opacity: 1 !important; }
+
