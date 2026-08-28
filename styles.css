@@ -3211,10 +3211,14 @@ button {
 }
 
 .wwd-more ul li::before {
-  content: "•";
-  color: var(--clr-accent);
+  content: "";
   position: absolute;
   left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--clr-accent);
 }
 
 .wwd-more p {

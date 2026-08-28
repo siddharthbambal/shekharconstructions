@@ -303,7 +303,7 @@
   // ══════════════════════════════════════════
   const projectOptions = [
     { value: 'shiv-sparsh-villa', label: 'Shiv Sparsh Villa (New Manish Nagar - 3 BHK)' },
-    { value: 'shiv-subah-villas', label: 'Shiv Subah Villas (One Floor One Flat - 3 BHK)' },
+    { value: 'shiv-shubh-villa', label: 'Shiv Shubh Villa (One Floor One Flat - 3 BHK)' },
     { value: 'shivtara-towers', label: 'Shivtara Towers (Shambhu Nagar - Launching Oct 2026)' },
     { value: 'shiv-kunj', label: 'Shiv Kunj (Arya Nagar - Launching Soon)' },
     { value: 'sapphire-tower', label: 'Sapphire Tower (Dabha - Launching Soon)' },
