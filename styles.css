@@ -3663,3 +3663,14 @@ button {
 
 .social-card:hover { transform: translateY(-5px); } .social-card:hover .social-overlay { opacity: 1 !important; }
 
+
+/* SEO Articles Section */
+.seo-article summary::-webkit-details-marker { display: none; }
+.seo-article[open] .article-chevron { transform: rotate(180deg); }
+.seo-article summary:hover h3 { color: var(--clr-accent-light); }
+.article-body h3 { color: var(--clr-white); font-size: 1rem; margin: var(--space-lg) 0 var(--space-sm); }
+.article-body ul { padding-left: var(--space-lg); margin: var(--space-sm) 0; }
+.article-body li { margin-bottom: 6px; }
+.article-body p { margin: 0 0 var(--space-md); }
+.article-body strong { color: var(--clr-accent-light); }
+
