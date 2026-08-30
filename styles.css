@@ -3674,3 +3674,7 @@ button {
 .article-body p { margin: 0 0 var(--space-md); }
 .article-body strong { color: var(--clr-accent-light); }
 
+
+.more-articles-toggle summary::-webkit-details-marker { display: none; }
+.more-articles-toggle[open] summary { margin-bottom: 2rem; }
+
