@@ -513,7 +513,7 @@ button {
   inset: 0;
   background: var(--clr-accent);
   border-radius: var(--radius-full);
-  animation: indicatorFill 5s linear forwards;
+  animation: indicatorFill var(--slide-duration, 5s) linear forwards;
 }
 
 @keyframes indicatorFill {

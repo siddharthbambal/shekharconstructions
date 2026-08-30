@@ -13,6 +13,7 @@
       preloader.classList.add('hidden');
       document.body.style.overflow = '';
       initScrollReveal();
+      startSlideshow();
     }, 1200);
   });
 
@@ -66,18 +67,17 @@
     "A distinguished moment at the CREDAI Women’s Wing Zonal Meet, celebrating leadership, collaboration and women’s growing influence in real estate."
   ];
 
+  
   let currentSlide = 0;
-  let slideInterval;
+  let slideTimeout;
   const SLIDE_DURATION = 5000;
+  const FIRST_SLIDE_DURATION = 8000; // Keep first image longer
 
   function goToSlide(index) {
     // Remove active from all
     slides.forEach(s => s.classList.remove('active'));
-    indicators.forEach(i => i.classList.remove('active'));
-
-    // Reset indicator animation
     indicators.forEach(i => {
-      const after = i.querySelector('::after');
+      i.classList.remove('active');
       i.style.animation = 'none';
       void i.offsetHeight; // force reflow
       i.style.animation = '';
@@ -102,6 +102,7 @@
       if (labelEl) labelEl.textContent = albumHeroLabels[currentSlide];
       if (titleEl) titleEl.textContent = albumHeroTitles[currentSlide];
       if (subtitleEl) subtitleEl.textContent = albumHeroSubtitles[currentSlide];
+
       [labelEl, titleEl, subtitleEl].forEach(el => {
         if (!el) return;
         el.style.opacity = '1';
@@ -109,20 +110,28 @@
       });
     }, 300);
   }
+
   function nextSlide() {
     goToSlide((currentSlide + 1) % slides.length);
+    startSlideshow();
   }
 
   function startSlideshow() {
     if (slides.length < 2) return;
-    clearInterval(slideInterval);
-    slideInterval = setInterval(nextSlide, SLIDE_DURATION);
+    clearTimeout(slideTimeout);
+    let duration = (currentSlide === 0) ? FIRST_SLIDE_DURATION : SLIDE_DURATION;
+    
+    // Update css variable for the indicator animation duration
+    indicators.forEach(i => i.style.setProperty('--slide-duration', duration + 'ms'));
+    
+    slideTimeout = setTimeout(nextSlide, duration);
   }
 
   // Add transition styles to hero text
   const heroLabel = document.getElementById('hero-label');
   const heroTitle = document.getElementById('hero-title');
   const heroSubtitle = document.getElementById('hero-subtitle');
+  
   if (heroLabel) {
     heroLabel.style.transition = 'opacity 0.4s cubic-bezier(0.16,1,0.3,1), transform 0.4s cubic-bezier(0.16,1,0.3,1)';
   }
@@ -132,11 +141,45 @@
   if (heroSubtitle) {
     heroSubtitle.style.transition = 'opacity 0.4s cubic-bezier(0.16,1,0.3,1) 0.1s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.1s';
   }
+
   // Indicator clicks
   indicators.forEach((indicator, idx) => {
     indicator.addEventListener('click', () => {
       goToSlide(idx);
       startSlideshow(); // reset timer
+    });
+  });
+
+  // Touch swipe for hero
+  let touchStartX = 0;
+  let touchEndX = 0;
+  const heroSection = document.querySelector('.hero');
+
+  if (heroSection) {
+    heroSection.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    heroSection.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) {
+          // swipe left -> next
+          goToSlide((currentSlide + 1) % slides.length);
+        } else {
+          // swipe right -> prev
+          goToSlide((currentSlide - 1 + slides.length) % slides.length);
+        }
+        startSlideshow();
+      }
+    }, { passive: true });
+  }
+
+  // WE NO LONGER START THE SLIDESHOW HERE.
+  // IT IS NOW STARTED IN THE WINDOW LOAD EVENT (PRELOADER).
+ // reset timer
     });
   });
 
