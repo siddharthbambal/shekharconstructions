@@ -74,12 +74,11 @@
   const FIRST_SLIDE_DURATION = 8000; // Keep first image longer
 
   function goToSlide(index) {
-    // Remove active from all
     slides.forEach(s => s.classList.remove('active'));
     indicators.forEach(i => {
       i.classList.remove('active');
       i.style.animation = 'none';
-      void i.offsetHeight; // force reflow
+      void i.offsetHeight; 
       i.style.animation = '';
     });
 
@@ -87,7 +86,6 @@
     slides[currentSlide].classList.add('active');
     indicators[currentSlide].classList.add('active');
 
-    // Update hero text with smooth transition
     const labelEl = document.getElementById('hero-label');
     const titleEl = document.getElementById('hero-title');
     const subtitleEl = document.getElementById('hero-subtitle');
@@ -121,13 +119,11 @@
     clearTimeout(slideTimeout);
     let duration = (currentSlide === 0) ? FIRST_SLIDE_DURATION : SLIDE_DURATION;
     
-    // Update css variable for the indicator animation duration
     indicators.forEach(i => i.style.setProperty('--slide-duration', duration + 'ms'));
     
     slideTimeout = setTimeout(nextSlide, duration);
   }
 
-  // Add transition styles to hero text
   const heroLabel = document.getElementById('hero-label');
   const heroTitle = document.getElementById('hero-title');
   const heroSubtitle = document.getElementById('hero-subtitle');
@@ -142,15 +138,13 @@
     heroSubtitle.style.transition = 'opacity 0.4s cubic-bezier(0.16,1,0.3,1) 0.1s, transform 0.4s cubic-bezier(0.16,1,0.3,1) 0.1s';
   }
 
-  // Indicator clicks
   indicators.forEach((indicator, idx) => {
     indicator.addEventListener('click', () => {
       goToSlide(idx);
-      startSlideshow(); // reset timer
+      startSlideshow();
     });
   });
 
-  // Touch swipe for hero
   let touchStartX = 0;
   let touchEndX = 0;
   const heroSection = document.querySelector('.hero');
@@ -166,10 +160,8 @@
 
       if (Math.abs(diff) > 50) {
         if (diff > 0) {
-          // swipe left -> next
           goToSlide((currentSlide + 1) % slides.length);
         } else {
-          // swipe right -> prev
           goToSlide((currentSlide - 1 + slides.length) % slides.length);
         }
         startSlideshow();
@@ -177,39 +169,7 @@
     }, { passive: true });
   }
 
-  // WE NO LONGER START THE SLIDESHOW HERE.
-  // IT IS NOW STARTED IN THE WINDOW LOAD EVENT (PRELOADER).
- // reset timer
-    });
-  });
 
-  // Touch swipe for hero
-  let touchStartX = 0;
-  let touchEndX = 0;
-  const heroSection = document.querySelector('.hero');
-
-  if (heroSection) {
-    heroSection.addEventListener('touchstart', (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-
-    heroSection.addEventListener('touchend', (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-      const diff = touchStartX - touchEndX;
-      if (Math.abs(diff) > 50) {
-        if (diff > 0) {
-          // swipe left → next
-          goToSlide((currentSlide + 1) % slides.length);
-        } else {
-          // swipe right → prev
-          goToSlide((currentSlide - 1 + slides.length) % slides.length);
-        }
-        startSlideshow();
-      }
-    }, { passive: true });
-  }
-
-  startSlideshow();
 
   // ══════════════════════════════════════════
   // NAVIGATION
