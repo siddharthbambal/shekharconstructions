@@ -3678,3 +3678,69 @@ button {
 .more-articles-toggle summary::-webkit-details-marker { display: none; }
 .more-articles-toggle[open] summary { margin-bottom: 2rem; }
 
+
+
+.upcoming-mini-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+@media (max-width: 768px) {
+  .upcoming-mini-grid {
+    gap: 8px;
+    padding: 0 3%;
+  }
+  .upcoming-mini-grid .project-card {
+    border-radius: 6px;
+  }
+  .upcoming-mini-grid .project-card-body {
+    padding: 10px 8px;
+  }
+  .upcoming-mini-grid .project-card-img {
+    min-height: 100px;
+    aspect-ratio: 1/1;
+  }
+  .upcoming-mini-grid .project-card-name {
+    font-size: 0.85rem;
+    margin-bottom: 2px;
+  }
+  .upcoming-mini-grid .project-card-location {
+    font-size: 0.6rem;
+    margin-bottom: 5px;
+  }
+  .upcoming-mini-grid .project-status-sub {
+    font-size: 0.55rem;
+    margin-bottom: 2px;
+  }
+  .upcoming-mini-grid .project-spec-value {
+    font-size: 0.65rem;
+  }
+  .upcoming-mini-grid .project-spec-label {
+    font-size: 0.55rem;
+  }
+  .upcoming-mini-grid .project-card-specs {
+    flex-direction: column;
+    gap: 4px;
+    padding-top: 6px;
+  }
+  .upcoming-mini-grid .img-expand-btn {
+    width: 24px;
+    height: 24px;
+    bottom: 5px;
+    right: 5px;
+  }
+  .upcoming-mini-grid .img-expand-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+  .upcoming-mini-grid .project-badge {
+    font-size: 0.5rem;
+    padding: 2px 4px;
+    top: 5px;
+    left: 5px;
+  }
+}
