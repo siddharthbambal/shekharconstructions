@@ -308,8 +308,11 @@
     { value: 'shiv-sparsh-villa', label: 'Shiv Sparsh Villa (New Manish Nagar - 3 BHK)' },
     { value: 'shiv-shubh-villa', label: 'Shiv Shubh Villa (One Floor One Flat - 3 BHK)' },
     { value: 'shivtara-towers', label: 'Shivtara Towers (Shambhu Nagar - Launching Oct 2026)' },
-    { value: 'shiv-kunj', label: 'Shiv Kunj (Arya Nagar - Launching Soon)' },
-    { value: 'sapphire-tower', label: 'Sapphire Tower (Dabha - Launching Soon)' },
+    { value: 'shiv-kunj', label: 'Shiv Kunj (Dhaba - Launching Soon)' },
+        { value: 'sapphire-tower', label: 'Sapphire Tower (Jhamtha - Launching Soon)' },
+    { value: 'silvara-tower', label: 'Silvara Tower (Arya Nagar - Launching 2028)' },
+    { value: 'sattava-heights', label: 'Sattava Heights (Shambhu Nagar - Launching 2028)' },
+    { value: 'sora-heights', label: 'Sora Heights (Arya Nagar - Launching 2027)' },
     { value: 'other-project', label: 'Other / General Project Enquiry' }
   ];
 
