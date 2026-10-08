@@ -38,8 +38,6 @@
 
   const albumHeroLabels = [
     "In the presence of leadership",
-    "In the presence of leadership",
-    "Trust that extends further",
     "Trust that extends further",
     "Excellence in residential development",
     "Women shaping the industry",
@@ -53,8 +51,6 @@
   ];
   const albumHeroTitles = [
     "A Moment of Distinction",
-    "A Moment of Distinction",
-    "Recognition Beyond the Built",
     "Recognition Beyond the Built",
     "Recognised Among the Best",
     "A New Chapter of Leadership",
@@ -68,9 +64,7 @@
   ];
   const albumHeroSubtitles = [
     "A distinguished moment with Hon. Shri Devendra Fadnavis, Chief Minister of Maharashtra.",
-    "A distinguished moment with Hon. Shri Devendra Fadnavis, Chief Minister of Maharashtra.",
     "A moment of recognition with Hon. Shri Chandrashekhar Bawankule, Cabinet Minister for Revenue, Maharashtra.",
-    "A continued moment of recognition with Hon. Shri Chandrashekhar Bawankule, Cabinet Minister for Revenue, Maharashtra.",
     "Honoured at the MAREDCO Maharashtra awards for Best Residential Project — 2022.",
     "A proud moment at the CREDAI Maharashtra Women’s Wing Installation, marking leadership, representation and a stronger voice for women in real estate.",
     "A proud moment for Bambal Infrastructure, receiving a Certificate of Appreciation from NAREDCO Vidarbha, presented by Dr. Niranjan Hiranandani, Chairman, NAREDCO.",
