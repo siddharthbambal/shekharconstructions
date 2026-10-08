@@ -558,7 +558,7 @@ button {
 @media (max-width: 680px) {
   .hero {
     height: auto;
-    min-height: 39rem;
+    min-height: 30rem;
   }
 
   .hero-slide img {
