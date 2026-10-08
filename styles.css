@@ -436,7 +436,7 @@ button {
   left: 0;
   right: 0;
   z-index: 5;
-  padding: var(--space-3xl) var(--space-lg) var(--space-4xl);
+  padding: var(--space-3xl) var(--space-lg) var(--space-xl);
   text-align: left;
 }
 
@@ -604,7 +604,7 @@ button {
   .hero-content {
     position: relative;
     padding-top: var(--space-lg);
-    padding-bottom: var(--space-2xl);
+    padding-bottom: var(--space-lg);
     background: #17130a;
   }
 }
