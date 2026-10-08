@@ -582,16 +582,30 @@ button {
 @media (max-width: 680px) {
   .hero {
     height: auto;
-    min-height: 26rem;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-slides {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1.05;
   }
 
   .hero-slide img {
     object-position: center 15%;
   }
 
+  .hero-overlay, .hero-vignette, .hero-scroll {
+    display: none !important;
+  }
+
   .hero-content {
-    padding-bottom: 5rem;
-    background: linear-gradient(to top, rgba(0,0,0,.88), transparent 65%);
+    position: relative;
+    padding-top: var(--space-lg);
+    padding-bottom: var(--space-2xl);
+    background: #17130a;
   }
 }
 
