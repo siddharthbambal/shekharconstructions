@@ -38,33 +38,48 @@
 
   const albumHeroLabels = [
     "In the presence of leadership",
+    "In the presence of leadership",
+    "Trust that extends further",
     "Trust that extends further",
     "Excellence in residential development",
     "Women shaping the industry",
     "Honoured by industry leadership",
     "By women, for women",
+    "By women, for women",
     "Celebrating achievement with the industry",
-    "Building a stronger industry together"
+    "Building a stronger industry together",
+    "A Milestone of Success",
+    "Architectural Recognition"
   ];
   const albumHeroTitles = [
     "A Moment of Distinction",
+    "A Moment of Distinction",
+    "Recognition Beyond the Built",
     "Recognition Beyond the Built",
     "Recognised Among the Best",
     "A New Chapter of Leadership",
     "Recognition from the Industry",
     "Celebrating Women in Leadership",
+    "Celebrating Women in Leadership",
     "Recognising Excellence",
-    "Leading the Conversation"
+    "Leading the Conversation",
+    "Excellence Award Ceremony",
+    "Indian Architects' Institute Celebration"
   ];
   const albumHeroSubtitles = [
     "A distinguished moment with Hon. Shri Devendra Fadnavis, Chief Minister of Maharashtra.",
+    "A distinguished moment with Hon. Shri Devendra Fadnavis, Chief Minister of Maharashtra.",
     "A moment of recognition with Hon. Shri Chandrashekhar Bawankule, Cabinet Minister for Revenue, Maharashtra.",
+    "A continued moment of recognition with Hon. Shri Chandrashekhar Bawankule, Cabinet Minister for Revenue, Maharashtra.",
     "Honoured at the MAREDCO Maharashtra awards for Best Residential Project — 2022.",
     "A proud moment at the CREDAI Maharashtra Women’s Wing Installation, marking leadership, representation and a stronger voice for women in real estate.",
     "A proud moment for Bambal Infrastructure, receiving a Certificate of Appreciation from NAREDCO Vidarbha, presented by Dr. Niranjan Hiranandani, Chairman, NAREDCO.",
     "A moment of recognition at FemmiCon, celebrating women making a meaningful mark in the real-estate industry.",
+    "Another wonderful moment at FemmiCon, celebrating women making a meaningful mark in the real-estate industry.",
     "A proud moment of receiving recognition at the IIA Maharashtra platform, celebrating contribution and excellence in the built environment.",
-    "A distinguished moment at the CREDAI Women’s Wing Zonal Meet, celebrating leadership, collaboration and women’s growing influence in real estate."
+    "A distinguished moment at the CREDAI Women’s Wing Zonal Meet, celebrating leadership, collaboration and women’s growing influence in real estate.",
+    "A proud moment on stage receiving the Excellence Award for our unwavering commitment to quality and architectural brilliance.",
+    "Celebrating architectural innovation and excellence at the prestigious Indian Architects' Institute event."
   ];
 
   
