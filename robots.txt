@@ -1,4 +1,59 @@
+# Bambal Infrastructure robots.txt
+# Welcome Search Engines & AI Crawlers (ChatGPT, Claude, Gemini, Perplexity, Copilot, Apple Intelligence)
+
 User-agent: *
 Allow: /
 
+# OpenAI / ChatGPT / SearchGPT
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# Anthropic / Claude
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Google / Gemini
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# Apple Intelligence / Siri
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Microsoft Bing / Copilot
+User-agent: Bingbot
+Allow: /
+
+# Meta / Cohere / Common Crawl
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# Sitemaps & AI Knowledge Manifests
 Sitemap: https://bambalinfrastructure.com/sitemap.xml
+# AI Model Knowledge Manifest: https://bambalinfrastructure.com/llms.txt
+# AI Model Full Reference: https://bambalinfrastructure.com/llms-full.txt
