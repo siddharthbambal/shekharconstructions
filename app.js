@@ -6,19 +6,35 @@
 (function () {
   'use strict';
 
-  // ── Preloader ──
-  window.addEventListener('load', () => {
+  // ── Ultra-Fast Non-Blocking Preloader ──
+  let preloaderDismissed = false;
+  function dismissPreloader() {
+    if (preloaderDismissed) return;
+    preloaderDismissed = true;
     const preloader = document.getElementById('preloader');
-    setTimeout(() => {
+    if (preloader) {
       preloader.classList.add('hidden');
-      document.body.style.overflow = '';
-      initScrollReveal();
-      startSlideshow();
-    }, 1200);
-  });
+      setTimeout(() => {
+        if (preloader && preloader.parentNode) preloader.parentNode.removeChild(preloader);
+      }, 500);
+    }
+    document.body.style.overflow = '';
+    initScrollReveal();
+    startSlideshow();
+  }
 
-  // Prevent scroll while loading
-  document.body.style.overflow = 'hidden';
+  // Dismiss as soon as DOM is ready without waiting for full media downloads
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    setTimeout(dismissPreloader, 100);
+  } else {
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(dismissPreloader, 150);
+    });
+  }
+
+  // Fail-safe: Under no circumstances allow the preloader to block the screen past 400ms
+  window.addEventListener('load', dismissPreloader);
+  setTimeout(dismissPreloader, 400);
 
   // ══════════════════════════════════════════
   // HERO SLIDESHOW

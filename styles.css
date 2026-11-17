@@ -4,7 +4,7 @@
    ═══════════════════════════════════════════════════════ */
 
 /* ── Google Fonts ── */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
+/* Google Fonts loaded via HTML <head> for non-blocking parallel delivery */
 
 /* ── CSS Custom Properties ── */
 :root {
@@ -3781,4 +3781,20 @@ button {
     top: 5px;
     left: 5px;
   }
+}
+
+
+/* ══════════════════════════════════════════
+   PERFORMANCE & RENDERING OPTIMIZATIONS
+   ══════════════════════════════════════════ */
+.projects-grid,
+.services-full-grid,
+.services-cards-grid,
+.leadership-grid,
+.faq-grid,
+.testimonials-grid,
+.upcoming-mini-grid,
+.wwd-grid {
+  content-visibility: auto;
+  contain-intrinsic-size: 500px;
 }
